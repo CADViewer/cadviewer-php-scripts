@@ -55,6 +55,10 @@
 
 
 
+//  USE svgz compression
+	$svgz_compress = false;   // default is false
+
+
 
 //  Conversion engines executables - Community Version
 // 	Linux

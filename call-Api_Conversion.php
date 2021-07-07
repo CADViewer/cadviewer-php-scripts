@@ -10,43 +10,11 @@
         $_GET  = JSON (jsonp)formatted request according to TMS REST Api specification
 		alternatively the content directly posted to the RESTful API, JSON formatted,
 
-    Output: A formatted JSON HTTP response according to TME REST Api specification
-
-
-    History:
-		May 30          2016  - Version 1.4.05   - added external configuration file, infrastructure for calling through CV-JS
-		Aug 12          2016  - Version 1.4.06   - updated for autoxchange defined through symbolic links
-		Sep 11          2016  - Version 1.4.07   - minor additions
-		Oct 18-20       2016  - Version 1.4.08   - modifications to config, ability to do conversions via POST
-		Feb 2 - Apr 26  2017  - Version 1.4.09   - set to use AX2017
-		Apr 26          2017  - Version 1.4.10   - renamed to call-Api_Conversion
-
-		August 1        2017  - Version 1.5.01   - Setup for SVG conversions
-		August 17       2017  - Version 1.5.02   - Quotes for RL/TL conversion parameter handling
-		August 28       2017  - Version 1.5.03   - PDF creation for print
-		August 31       2017  - Version 1.5.04   - Not delete for overlay
-		September 6     2017  - Version 1.5.05   - Not delete for overlay, version implemented with remainOnServer
-		October 30	    2017  - Version 1.5.06    - Url encoding of strings in json statmenet
-		November 2	    2017  - Version 1.5.07    - Added interface to handle sharefile REST file sources
-		May 2	        2018  - Version 1.5.08    - AX2019 support
-
-		Nov 09	        2018  - Version 1.5.09    - Debug echo to local log file: call-Api_Conversion_log.txt
-		Nov 11	        2018  - Version 1.5.10    - We are overwriting the configuration file settings with the contentlocation setting
-		Jan 26	        2019  - Version 1.5.11    - Modyfying debug information
-		Mar 29_apr 01	2019  - Version 1.5.12    - If server file, do not move input file to temp folder
-		May 14       	2019  - Version 1.5.14    - Updated code to not remove source server file 
-		
-		June 19       	2019  - Version 1.6.01    - AX2020
-		June 28       	2019  - Version 1.7.01    - On Windows, redirect to bat file for codepage control
-		July  5      	2019  - Version 1.7.02    - On Windows, redirect to bat file for codepage control
-		August  23      2019  - Version 1.7.04    - redirection to bat for codepage control, based on PHP_OS
-		March   14      2020  - Version 2.0.01    - rewrite for Community and Enterprise use
-		
+    Output: A formatted JSON HTTP response according to TME REST Api specification		
+	
 */
 
-
 	header("Access-Control-Allow-Origin: *");
-
 
 	// Configuration file for CADViewer Community and CADViewer Enterprise version and standard settings
 	require 'CADViewer_config.php';
@@ -80,13 +48,7 @@
 		//echo "before _ isset()x2 ";
 		fwrite($fd_log, "before _ isset()x2  \r\n");
 	}	
-/**
-	if ($debug){
-		//echo "";
-		fwrite($fd, );
-	}
-**/	
-		
+						
 	$post_request_flag = false;
     $callback ='tms_restful_api';
 	$json_data = "";
@@ -137,7 +99,6 @@
 		}
     }
 
-
 	$demo_mode = FALSE;
 
 	// we are setting the authentication success to true
@@ -145,7 +106,6 @@
 
 	//$stream_response_cgi= $httpHost . '/' . $callbackMethod ;
 	$stream_response_cgi= $httpPhpUrl . '/' . $callbackMethod ;
-
 
 	// this will be overwritten with _config file value
 	$ld_lib_path = "/home/cadviewer/tms-restful-api/lib";
@@ -260,8 +220,6 @@
 
 	$conversion_response = json_decode($conversion_response_template, true);
 
-
-
 	try {
 		$conv_status = isset($json_request['converters']);
 
@@ -273,7 +231,6 @@
 	} catch (Exception $e) {
 		// none
 	}
-
 
 	$op_string = operating_system_detection($debug, $fd_log);
 	$op_string = strtolower($op_string);  // 1.7.04
@@ -287,11 +244,8 @@
 	$engine_path = "";
 	$userlabel = $json_request['userLabel'];
 
-
-
 // THESE ARE HANDLING RELATED TO THE COMMUNITY EDITION LIBREDWG CONVERTER
 // DOWN
-
 	
 	//echo $converter . "  " . $version . "  " . $max_conv . "  ";
 	
@@ -314,8 +268,7 @@
 		if (isset($json_request['contentLocation']))
 			$contentlocation = $json_request['contentLocation'];
 
-		//echo $contentlocation;
-		
+		//echo $contentlocation;		
 		// NOW we have to strip off server url of string and replace with server location path
 		$server_load = 1;  // we are assuming server load
 		if ($debug){
@@ -514,6 +467,15 @@
 								if ($parameters[$i]['paramName'] == 'xpath') $add_xpath = false;  // we are not using the config xpath, instead we use the one in the parameters
 								if ($parameters[$i]['paramName'] == 'lpath') $add_lpath = false;  // we are not using the config xpath, instead we use the one in the parameters
 
+								$v1 = $parameters[$i]['paramName'];
+								$v2 = $parameters[$i]['paramValue'];
+								if ($debug){
+									fwrite($fd_log, "param $v1 : $v2  \r\n");
+								}
+								if ( $v1 =='f' && $v2 == 'svg' && $svgz_compress == true){
+									$parameters[$i]['paramValue'] = "svgz";
+								}
+
 								if ($parameters[$i]['paramName'] == 'layout'){
 									if (strpos($op_string, 'win') !== false) { // 2019-06-28  - running as .bat
 										$param_string = $param_string . " \"-" . $parameters[$i]['paramName'] ."=". $parameters[$i]['paramValue'] ."\"";
@@ -553,7 +515,7 @@
 		}
 
 		if ($debug){
-			fwrite($fd_log, "\$param_string: $param_string  \r\n");
+			fwrite($fd_log, "  \$output_file_extension:$output_file_extension   \$param_string: $param_string  \r\n");
 		}
  		$file_content = '';
 		
@@ -1032,28 +994,17 @@ set_time_limit(240);
 				if (file_exists($file_2)){
 					unlink($file_2);
 				}
-
 				// here we need to make a loop an remove all w2d files if conversion is done with -vn=*ALL*
-
 			}
-
-
 		}
-
-
 
 //		echo "return1= $return1 ";
 //		echo "out= $out ";
 
-
 		putenv("LD_LIBRARY_PATH=$saved");           	// restore old value
 		$cont_loc = $httpHost . "/" . $outputFile ;
 
-
 		$embed_cont = "";
-
-
-
 
 // if svg_js_creation_cvheadless, take the dwf file, run it through painter,to produce three new .js files
 // delete the dwf file after use.
@@ -1077,18 +1028,14 @@ set_time_limit(240);
 
 			shell_exec($headless_command_line);
 
-
 // echo "  $headless_command_line \n";
-
 // set up the call to painter
 
 			$building_data_identifier = 'BUILDING_DATA_IDENTIFIER';
 			$floor = 'FLOOR';
 
 //   -ext parameter added
-
 			$js_command_line = "./converters/painter_L64_01_32 " . $home_dir . $fileLocation  . 'fj' . $temp_file_name . '.' . $output_file_extension ." ". $param_string_painter ." -ext -bldg=" . $building_data_identifier ." -floor=" . $floor;
-
 
 // echo "  $js_command_line \n";
 
@@ -1099,12 +1046,9 @@ set_time_limit(240);
 
 			// rename $temp_file_name .js file to -full.js
 
-
 			$cp_command_line = 'mv ./files/fj' . $temp_file_name . '.js ./files/fj' . $temp_file_name . '-full.js' ;
 
 			exec($cp_command_line, $out, $return1);
-
-
 			$rm_command_line = 'rm ./files/fj' . $temp_file_name . '.js';
 
 			exec($rm_command_line, $out, $return1);

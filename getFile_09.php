@@ -1,7 +1,6 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-
 require 'CADViewer_config.php';
 
 $fileTag 	= $_GET['fileTag'];
@@ -13,6 +12,14 @@ try{
 	$remainOnServer = $_GET['remainOnServer'];
 } catch (Exception $e) {
 		// none
+}
+
+if ($Type == "svg" )
+	header('Content-type: image/svg+xml');
+
+if ($Type == "svgz" ){
+	header('Content-type: image/svg+xml');
+	header('Content-Encoding: gzip');
 }
 
 $returnFile = $fileLocation . $fileTag . '.' . $Type;
