@@ -51,7 +51,7 @@
 // 	Linux
 //	$ax2020_executable = "ax2020_L64_20_05_52a";
 // 	Windows
-	$ax2020_executable = "AX2020_W32_20_05_52b.exe";
+	$ax2020_executable = "AX2020_W64_20_05_53a.exe";
 
 
 
@@ -66,9 +66,6 @@
 // 	Windows
 	$community_executable = "dwg2SVG.exe";
 
-
-
-	
 
 //  Path to the location of the license key axlic.key file, typically this is the same location as AX2020
 // 	Linux Windows
