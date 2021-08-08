@@ -51,7 +51,7 @@
 // 	Linux
 //	$ax2020_executable = "ax2020_L64_20_05_52a";
 // 	Windows
-	$ax2020_executable = "AX2020_W64_20_05_53a.exe";
+	$ax2020_executable = "AX2020_W64_20_05_53d.exe";
 
 
 
