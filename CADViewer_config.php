@@ -37,11 +37,11 @@
 
 //  Path to the location of the AutoXchange AX2020 converter infrastructure
 //  Linux
-//	$converterLocation = $home_dir . "/converters/ax2020/linux/";
+//	$converterLocation = $home_dir . "/converters/ax2022/linux/";
 //	$converterLocation = $home_dir . "/converters/community/libredwg/linux/";
 
 //  Windows
-	$converterLocation = $home_dir . "/converters/ax2020/windows/";
+	$converterLocation = $home_dir . "/converters/ax2022/windows/";
 //	$converterLocation = $home_dir . "/converters/community/libredwg/windows/";
 
 
@@ -49,7 +49,7 @@
 
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$ax2020_executable = "ax2020_L64_20_05_52a";
+//	$ax2020_executable = "ax2022_L64_22_07_54";
 // 	Windows
 	$ax2020_executable = "AX2022_W64_22_07_54.exe";
 
@@ -69,9 +69,9 @@
 
 //  Path to the location of the license key axlic.key file, typically this is the same location as AX2020
 // 	Linux Windows
-//	$licenseLocation = $home_dir . "/converters/ax2020/linux/";
+//	$licenseLocation = $home_dir . "/converters/ax2022/linux/";
 //  Windows
-	$licenseLocation = $home_dir . "/converters/ax2020/windows/";
+	$licenseLocation = $home_dir . "/converters/ax2022/windows/";
 
 
 
