@@ -49,9 +49,9 @@
 
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$ax2020_executable = "ax2022_L64_22_07_54";
+//	$ax2020_executable = "ax2022_L64_22_07_55a";
 // 	Windows
-	$ax2020_executable = "AX2022_W64_22_07_54.exe";
+	$ax2020_executable = "AX2022_W64_22_07_55.exe";
 
 
 
