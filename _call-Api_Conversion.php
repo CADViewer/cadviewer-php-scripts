@@ -23,7 +23,7 @@
 	//require 'CADViewer_Enterprise_config.php';
 
 	// only oncomment this, if loading drawing files from a sharepoint server via REST calls
-	// require 'CV-JS_sharepoint_connector.php';
+	//require 'CV-JS_sharepoint_connector.php';
 
 	// Settings of variables, not defined in configuration files
 	$add_xpath = false;  	// NOTE: We are overwriting the configuration file settings with the contentlocation setting. 		
@@ -132,7 +132,10 @@
 	if (empty($json_request)){
 
 		$wrong_post_format = 1;
-		$error_response = "{\"completedAction\":\"none\",\"errorCode\":\" JSON string expression incorrectly formatted \"}";
+		$error_response = "{
+										\"completedAction\":\"none\",
+										\"errorCode\":\" JSON string expression incorrectly formatted \"
+										}";
 		//echo $error_response;
 		// if jsonp then prepend callback, if standard post do not
 		if ($post_request_flag)
@@ -175,7 +178,7 @@
 
 
 //  list over available engines
-	$engine_response="{\"installedEngines\":[{\"converter\":\"dwg2SVG\",\"version\":\"V1.00\",\"status\":\"active\"}, {\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"status\":\"active\"}, {\"converter\":\"AutoXchange AX2022\",\"version\":\"V2.00\",\"status\":\"active\"}, {\"converter\":\"LinkList 2022\",\"version\":\"V2.00\",\"status\":\"active\"}]}";
+	$engine_response="{\"installedEngines\":[{\"converter\":\"dwg2SVG\",\"version\":\"V1.00\",\"status\":\"active\"}, {\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"status\":\"active\"}]}";
 
 	$engine_listing = [
 		"internalListInstalledEngines" => [
@@ -194,24 +197,10 @@
 				"status" => "active"
 			],
 			[
-				"converter" => "AutoXchange AX2022",
-				"version" => "V2.00",
-				"executable" => $ax2020_executable,
-				"location" => $converterLocation,
-				"status" => "active"
-			],
-			[
 				"converter" => "AutoXchange AX2020 DEMO",
 				"version" => "V1.00",
 				"executable" => $ax2020_executable,
 				"location" => $converterLocation,
-				"status" => "active"
-			],
-			[
-				"converter" => "LinkList 2020",
-				"version" => "V2.00",
-				"executable" => $linklist2022_executable,
-				"location" => $linklistLocation,
 				"status" => "active"
 			]
 		]
@@ -508,13 +497,7 @@
 				}
 				else{
 					// there is only a param
-					$param_string = $param_string . " -" . $parameters[$i]['paramName'] ;    
-					
-					// if LinkLIst and -json, we change format to json, txt is default
-					if ($parameters[$i]['paramName'] =='json' && strrpos($converter , "LinkList")==0){  // 6.5.20
-						$output_file_extension = "json";
-					}
-
+					$param_string = $param_string . " -" . $parameters[$i]['paramName'] ;            ;
 				}
 			}
 			else {
@@ -538,12 +521,6 @@
 		
 		$temp_file_name = rand();
 		$fullPath	 =  $fileLocation  . 'f' . $temp_file_name . '.' . strtolower($contentformat) ;
-
-
-
-		// 6.5.20
-		$newload = false;
-
 
 
 		// 1.5.12		
@@ -572,14 +549,7 @@
 			}
 			// 1.5.12 up
 		}
-
 		
-		if ($debug){
-			fwrite($fd_log, " location X004  contentlocation:$contentlocation \r\n");
-		}
-
-
-
 		// we have two branches, standard file load branch
 		if ($json_request['action'] != 'svg_creation_sharepoint_REST'){
 
@@ -593,108 +563,24 @@
 							}
 						}
 
-						if ($debug){
-							fwrite($fd_log, "X005 In action: contentype file: $contentlocation  \r\n");
-						}
-
 						if ($contentusername == '' || $contentpassword == ''  ){
-
-
-
-							if ($debug){
-								fwrite($fd_log, "before download file  \r\n");
-							}
-							try{   // 6.5.20
-								if ($debug){
-									fwrite($fd_log, " HELLO! $fullPath  \r\n");
-								}
-								$newfname = $fullPath;
-								$file = fopen ($contentlocation, 'rb');
-								if ($file) {
-									$newf = fopen ($newfname, 'wb');
-									if ($newf) {
-										while(!feof($file)) {
-											fwrite($newf, fread($file, 1024 * 8), 1024 * 8);
-										}
-									}
-								}
-								if ($file) {
-									fclose($file);
-								}
-								if ($newf) {
-									fclose($newf);
-								}
-						
-								// we use download function above
-								$newload = true;
-
-
-							}
-							catch(Exception $err){
-						
-						
-								if ($debug){
-									fwrite($fd_log, "downloadFile: $err  \r\n");
-								}
-						
-						
-							}
-						
-							/*   THIS METHOD DOES NOT WORK FOR LARGE FILES
-
 							$file_content = "";
 							try {
 								$file_content = @file_get_contents($contentlocation);
 							} catch (Exception $e) {
-
-
-								if ($debug){
-									fwrite($fd_log, "no username/password file_get_contents: $e  \r\n");
-								}
-						
 								// content is empty, AX will give an error code response
 								$file_content = "";
 							}
-
-							*/
-
-
-
 						}
 						else{
 							//echo "before context...";
 
-
-
-
-							try {
-								$context = stream_context_create(array (
-									'http' => array (
-									'header' => 'Authorization: Basic ' . base64_encode("$contentusername:$contentpassword")
-									)
-								));
-								$data = file_get_contents($contentlocation, false, $context);
-
-							} catch (Exception $e) {
-
-
-								if ($debug){
-									fwrite($fd_log, "username/password file_get_contents: $e  \r\n");
-								}
-						
-							}
-
-
-
-
-
-
-							if ($debug){
-								fwrite($fd_log, "no username/password file_get_contents: $e  \r\n");
-							}
-					
-
-
+							$context = stream_context_create(array (
+								'http' => array (
+								'header' => 'Authorization: Basic ' . base64_encode("$contentusername:$contentpassword")
+								)
+							));
+							$data = file_get_contents($contentlocation, false, $context);
 
 						}
 
@@ -747,7 +633,7 @@
 			
 		
 		// 3.3.02c  - we only create the fullPath file, if not on server! 
-		if ($server_load == 0 && !$newload){		
+		if ($server_load == 0){		
 			if ($fd = fopen ($fullPath, "w+")) {
 				fwrite($fd, $file_content);
 				fclose ($fd);
@@ -846,10 +732,7 @@
 		if ($debug){
 			fwrite($fd_log, "\$engine_path: $engine_path  \r\n");
 		}
-
-	//	$command_line =	$engine_path;     
-
-		$command_line =	"\"" .  $engine_path . "\"";    // 6.5.20
+		$command_line =	$engine_path;
 
 		// add input file
 //		$command_line = $command_line . " -i=" . $home_dir . '/' . $fullPath;
@@ -934,19 +817,19 @@
 				fwrite($fd_log, "In loop to add xpath  \r\n");
 			}
 			
-			$command_line_parameter_xpath = 0;
+			$command_line_parameter_xpath = false;
 			for ($i = 0; $i < $max; $i++) {
 				if ($parameters[$i]['paramName'] == 'xpath'){
-					$command_line_parameter_xpath = 1;
+					$command_line_parameter_xpath = true;
 				}
 			}
 
 
 			if ($debug){
-				fwrite($fd_log, "after first loop \$command_line_parameter_xpath: $command_line_parameter_xpath  \r\n");
+				fwrite($fd_log, "after first loop \$command_line_parameter_xpath $command_line_parameter_xpath  \r\n");
 			}
 
-			if ($command_line_parameter_xpath == 0   &&  strrpos($converter , "LinkList")==-1){   // 6.5.20
+			if (!$command_line_parameter_xpath){
 				// strip off file name of $contentlocation		
 				$pos1 = strrpos ( $contentlocation , "/");
 				$xloc = substr($contentlocation, 0, $pos1+1);
@@ -1128,14 +1011,21 @@ set_time_limit(240);
 
 		if ($json_request['action'] == 'svg_js_creation_cvheadless'){
 
+
 // first create a new text based dwf file which has been through headlessCV -
+
+
 // set up the call to headless CV
+
 			$cv_codebase= "/home/cadviewer/tms-restful-api/cv_headless/";
 			$cv_classpath = "./cv_headless";
+
 			$headless_command_line = "sh ./cv_headless/callCVheadless.sh " .  $cv_codebase . " " .  $home_dir . $outputFile . " " . $home_dir . $fileLocation  . 'fj' . $temp_file_name . '.' . $output_file_extension;
 
 // echo " ZZZ $headless_command_line ZZZZZ \n";
+
 // echo		shell_exec($headless_command_line);
+
 			shell_exec($headless_command_line);
 
 // echo "  $headless_command_line \n";
@@ -1153,16 +1043,23 @@ set_time_limit(240);
 
 // echo "  $return1 \n";
 // echo "  $out \n";
+
 			// rename $temp_file_name .js file to -full.js
+
 			$cp_command_line = 'mv ./files/fj' . $temp_file_name . '.js ./files/fj' . $temp_file_name . '-full.js' ;
 
 			exec($cp_command_line, $out, $return1);
 			$rm_command_line = 'rm ./files/fj' . $temp_file_name . '.js';
 
 			exec($rm_command_line, $out, $return1);
+
+
 //echo "  $cp_command_line \n";
 //echo "  $rm_command_line \n";
+
 			// copy over base-DB.js into  $temp_file_name.js
+
+
 			$fP1 = $fileLocation  .'/fj' . $temp_file_name . '.js';
 			$baseDB = './cv_headless/base-DB.js';
 			$file_content1 = file_get_contents($baseDB);
@@ -1190,7 +1087,9 @@ set_time_limit(240);
 
 		}
 
+
 	$return1 = 'E' . $return1;
+
 
 // set up how the content is responded  , json_request['action'] of type conversion and data_extraction
 
@@ -1235,7 +1134,7 @@ set_time_limit(240);
 										  "version" => $version,
 										  "userLabel" => $userlabel,
 										  "contentResponse" => $contentresponse,
-										  "contentStreamData" => $cont_loc);
+										  "contentStream" => $cont_loc);
 		}
 
 
@@ -1474,7 +1373,10 @@ set_time_limit(240);
 			fwrite($fd_log, $json_request['action'] . "   \r\n");
 		}
 
+
+
 		if ( $json_request['action'] == 'svg_creation' || $json_request['action'] == 'pdf_creation' ){
+
 
 			if ( $contentresponse == 'file'){
 				$embed_cont = "";
@@ -1557,6 +1459,10 @@ set_time_limit(240);
 		}
 
 
+
+
+
+
 		$conversion_resp = _json_encode($conversion_response);
 		$general_response = $conversion_resp;
 
@@ -1588,37 +1494,33 @@ set_time_limit(240);
 				fwrite($fd_log, "\$post_request_flag, \$json_response only  \r\n");
 			}
 			else{
-				fwrite($fd_log, "\$post_request_flag  \$callback. = " . $callback.'(' . $json_response . ')' ."\r\n");
+				fwrite($fd_log, "\$post_request_flag false \$callback. = " . $callback.'(' . $json_response . ')' ."\r\n");
 			}	
 			fwrite($fd_log, "LAST BEFORE CALLBACK   \r\n \r\n \r\n");
 			fclose($fd_log);	
 		}
-
 
 	
 		// if jsonp then prepend callback, if standard post do not
 		if ($post_request_flag){
 			// Set HTTP Response Content Type
 				header('Content-Type: application/json; charset=utf-8');
-  				echo $json_response;
+  			echo $json_response;
 		}
 		else
     		echo $callback.'(' . $json_response . ')';
-
-
-
 
 		exit;
 	}
 
 	
 
+
+	
 	} catch(Exception $e) {
 		echo "The exception $e was created on line: " . $e->getLine();
 	}	
 	
-
-
 
 
 	// hereafter auxillary methods
@@ -1795,55 +1697,4 @@ set_time_limit(240);
 	**/
 	
 	}
-
-
-
-//  download file from HTTP/HTTPS
-
-function _downloadFile($url, $path, $fd_log)
-{
-	try{
-
-		if ($debug){
-			fwrite($fd_log, " $url  $path  \r\n");
-		}
-
-
-
-
-		$newfname = $path;
-		$file = fopen ($url, 'rb');
-		if ($file) {
-			$newf = fopen ($newfname, 'wb');
-			if ($newf) {
-				while(!feof($file)) {
-					fwrite($newf, fread($file, 1024 * 8), 1024 * 8);
-				}
-			}
-		}
-		if ($file) {
-			fclose($file);
-		}
-		if ($newf) {
-			fclose($newf);
-		}
-
-
-	}
-	catch(Exception $err){
-
-
-		if ($debug){
-			fwrite($fd_log, "downloadFile: $err  \r\n");
-		}
-
-
-	}
-}
-
-
-
-
-
-
 ?>

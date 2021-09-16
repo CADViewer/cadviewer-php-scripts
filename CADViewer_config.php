@@ -51,7 +51,7 @@
 // 	Linux
 //	$ax2020_executable = "ax2022_L64_22_07_55a";
 // 	Windows
-	$ax2020_executable = "AX2022_W64_22_07_55d.exe";
+	$ax2020_executable = "AX2022_W64_22_07_55f.exe";
 
 
 
@@ -176,24 +176,37 @@
 //  Linux  Windows
 	$pdfboxVersionSplitMerge = "2.0.9";
 	
-	
+		
 //  Path to the location of the DWGMerge 2019 converter infrastructure
 //  Linux
 //	$dwgmergeLocation = $home_dir . "/converters/dwgmerge2019/linux/";
 //  Windows
-	$dwgmergeLocation = $home_dir . "/converters/dwgmerge2020/windows/";
-
+	$dwgmergeLocation = $home_dir . "/converters/dwgmerge2022/windows/";
 
 
 //  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
 //	$dwgmerge2019_executable = "DwgMerge_W32_19_01_02";
 // 	Windows
-	$dwgmerge2020_executable = "DwgMerge2020.exe";
+	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
+	
+
+
+//  Path to the location of the DWGMerge 2019 converter infrastructure
+//  Linux
+//	$linklistLocation = $home_dir . "/converters/linklist2022/linux/";
+//  Windows
+	$linklistLocation = $home_dir . "/converters/linklist2022/windows/";
+
+//  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
+// 	Linux
+//		$linklist2020_executable = "DwgMerge_W32_20_01_05.exe";
+// 	Windows
+	$linklist2022_executable = "LinkList_2022_W32_22_07_15.exe";
+	
 	
 	
 		
-	
 	
 	
 	
