@@ -4,22 +4,22 @@ Opening call-Api_Conversion_log.txt for new conversion:
 before _ isset()x2  
 _GET['tms_restful_api'] is set 
 first in file   
-$json_data: {"action":"svg_creation","converter":"AutoXchange AX2020","version":"V1.00","contentType":"file","contentLocation":"http://localhost/cadviewer//content/drawings/dwg/measure_template.dwg","contentFormat":"DWG","contentUsername":"","contentPassword":"","userLabel":"fromCADViewerJS","contentResponse":"stream","leaveStreamOnServer":0,"parameters":[{"paramName":"f","paramValue":"svg"},{"paramName":"last","paramValue":""},{"paramName":"hlall","paramValue":""},{"paramName":"fpath","paramValue":"c:/xampp/htdocs/cadviewer//converters/ax2022/windows/fonts/"},{"paramName":"postfix","paramValue":""}]}   
+$json_data: {"action":"svg_creation","converter":"AutoXchange AX2020","version":"V1.00","contentType":"file","contentLocation":"http://localhost/cadviewer//content/drawings/dwg/measure_template.dwg","contentFormat":"DWG","contentUsername":"","contentPassword":"","userLabel":"fromCADViewerJS","contentResponse":"stream","leaveStreamOnServer":0,"parameters":[{"paramName":"f","paramValue":"svg"},{"paramName":"last","paramValue":""},{"paramName":"hlall","paramValue":""},{"paramName":"fpath","paramValue":"getServerLocationFromScript/converters/ax2022/windows/fonts/"},{"paramName":"postfix","paramValue":""}]}   
 $json_request(conv):    
 AGENT operating_system_detection():  $agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36  
 AGENT PHP_OS : WINNT
 $max: 5  
 param f : svg  
-param fpath : c:/xampp/htdocs/cadviewer//converters/ax2022/windows/fonts/  
-  $output_file_extension:svg   $param_string:  "-f=svg" -last -hlall "-fpath=c:/xampp/htdocs/cadviewer//converters/ax2022/windows/fonts/" -postfix  
+param fpath : getServerLocationFromScript/converters/ax2022/windows/fonts/  
+  $output_file_extension:svg   $param_string:  "-f=svg" -last -hlall "-fpath=getServerLocationFromScript/converters/ax2022/windows/fonts/" -postfix  
 We are setting $server_load:  1  
 after content location check $server_load:  1  , content-type: (file 
  location X004  contentlocation:C:/xampp/htdocs/cadviewer//content/drawings/dwg/measure_template.dwg 
 X005 In action: contentype file: C:/xampp/htdocs/cadviewer//content/drawings/dwg/measure_template.dwg  
 before download file  
- HELLO! C:/xampp/htdocs/cadviewer/converters/files/f1852312606.dwg  
-$fullPath: C:/xampp/htdocs/cadviewer/converters/files/f1852312606.dwg  
-$fullPath: C:/xampp/htdocs/cadviewer/converters/files/f1852312606.dwg  
+ HELLO! C:/xampp/htdocs/cadviewer/converters/files/f2111354475.dwg  
+$fullPath: C:/xampp/htdocs/cadviewer/converters/files/f2111354475.dwg  
+$fullPath: C:/xampp/htdocs/cadviewer/converters/files/f2111354475.dwg  
 AA: before setting $fullPath:  $server_load 1   $contenttype file 
 $fullPath: C:/xampp/htdocs/cadviewer//content/drawings/dwg/measure_template.dwg  
 $max_conv: 5  
@@ -27,11 +27,11 @@ $engine_path: C:/xampp/htdocs/cadviewer/converters/ax2022/windows//AX2022_W64_22
 new $add_xpath    
 In loop to add xpath  
 after first loop $command_line_parameter_xpath: 0  
-$command_line: "C:/xampp/htdocs/cadviewer/converters/ax2022/windows//AX2022_W64_22_07_55f.exe" "-i=C:/xampp/htdocs/cadviewer//content/drawings/dwg/measure_template.dwg" "-o=C:/xampp/htdocs/cadviewer/converters/files/f1852312606.svg"  "-f=svg" -last -hlall "-fpath=c:/xampp/htdocs/cadviewer//converters/ax2022/windows/fonts/" -postfix "-lpath=C:/xampp/htdocs/cadviewer/converters/ax2022/windows/"  XXXXXXX  
+$command_line: "C:/xampp/htdocs/cadviewer/converters/ax2022/windows//AX2022_W64_22_07_55f.exe" "-i=C:/xampp/htdocs/cadviewer//content/drawings/dwg/measure_template.dwg" "-o=C:/xampp/htdocs/cadviewer/converters/files/f2111354475.svg"  "-f=svg" -last -hlall "-fpath=getServerLocationFromScript/converters/ax2022/windows/fonts/" -postfix "-lpath=C:/xampp/htdocs/cadviewer/converters/ax2022/windows/"  XXXXXXX  
 library path before new env: C:/xampp/htdocs/cadviewer/converters/ax2022/windows/  
 this is the value we got setting the environment 1  
 getenv after putenv: C:/xampp/htdocs/cadviewer/converters/ax2022/windows/   
-before call to exec:  "C:/xampp/htdocs/cadviewer/converters/ax2022/windows//AX2022_W64_22_07_55f.exe" "-i=C:/xampp/htdocs/cadviewer//content/drawings/dwg/measure_template.dwg" "-o=C:/xampp/htdocs/cadviewer/converters/files/f1852312606.svg"  "-f=svg" -last -hlall "-fpath=c:/xampp/htdocs/cadviewer//converters/ax2022/windows/fonts/" -postfix "-lpath=C:/xampp/htdocs/cadviewer/converters/ax2022/windows/"     
+before call to exec:  "C:/xampp/htdocs/cadviewer/converters/ax2022/windows//AX2022_W64_22_07_55f.exe" "-i=C:/xampp/htdocs/cadviewer//content/drawings/dwg/measure_template.dwg" "-o=C:/xampp/htdocs/cadviewer/converters/files/f2111354475.svg"  "-f=svg" -last -hlall "-fpath=getServerLocationFromScript/converters/ax2022/windows/fonts/" -postfix "-lpath=C:/xampp/htdocs/cadviewer/converters/ax2022/windows/"     
 before call to exec, engine_path:  C:/xampp/htdocs/cadviewer/converters/ax2022/windows//AX2022_W64_22_07_55f.exe    
 current script owner: caspe    
 AGENT operating_system_detection():  $agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36  
@@ -40,10 +40,10 @@ operating_system_detection(): WINNT
 exec return1  0   
 exec return1 check  0   
 unlink1  C:/xampp/htdocs/cadviewer//content/drawings/dwg/measure_template.dwg   
-unlink2  C:/xampp/htdocs/cadviewer/converters/files/f1852312606_ac1024.dwg   
+unlink2  C:/xampp/htdocs/cadviewer/converters/files/f2111354475_ac1024.dwg   
 svg_creation   
-$json_response = "{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"C:\/xampp\/htdocs\/cadviewer\/\/content\/drawings\/dwg\/measure_template.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f1852312606&Type=svg\"}"  
-$post_request_flag  $callback. = jQuery223008615586079176318_1632120479622("{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"C:\/xampp\/htdocs\/cadviewer\/\/content\/drawings\/dwg\/measure_template.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f1852312606&Type=svg\"}")
+$json_response = "{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"C:\/xampp\/htdocs\/cadviewer\/\/content\/drawings\/dwg\/measure_template.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f2111354475&Type=svg\"}"  
+$post_request_flag  $callback. = jQuery22306067670272741219_1632403350062("{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"C:\/xampp\/htdocs\/cadviewer\/\/content\/drawings\/dwg\/measure_template.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f2111354475&Type=svg\"}")
 LAST BEFORE CALLBACK   
  
  
