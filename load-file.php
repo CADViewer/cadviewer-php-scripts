@@ -1,5 +1,8 @@
 <?php
 
+// Configuration file for CADViewer Community and CADViewer Enterprise version and standard settings
+require 'CADViewer_config.php';
+
 $http_origin = '';
 
 if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -21,18 +24,51 @@ if (in_array($http_origin, $allowed_domains))
     header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
 }
 
-
-
 $fullPath = "";
+$loadtype = "";
 
 if (!empty($_GET)) {
-	$fullPath = $_GET['file'];
+	if (isset($_GET['file'])) {
+		$fullPath = $_GET['file'];
+	}
 }
 else{
-
     // no data passed by get
-	$fullPath = $_POST['file'];
+	if (isset($_POST['file'])) {
+		$fullPath = $_POST['file'];
+	}
 }
+
+
+if (!empty($_GET)) {
+	if (isset($_GET['loadtype'])) {
+		$loadtype = $_GET['loadtype'];
+	}
+}
+else{
+    // no data passed by get
+	if (isset($_POST['loadtype'])) {
+		$loadtype = $_POST['loadtype'];
+	}
+}
+
+// echo "XX" . $loadtype ."    languagefile";
+
+// load languages app dir
+if ( $loadtype == "languagefile"){
+	$fullPath = $home_dir_app . $fullPath;
+}
+
+// menu file app dir
+if ( $loadtype == "menufile"){
+	$fullPath = $home_dir_app . $fullPath;
+}
+
+// home dir . for server location
+if ( $loadtype == "serverfilelist"){
+	$fullPath = $home_dir . $fullPath;
+}
+
 
 //echo $fullPath;
 

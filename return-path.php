@@ -31,6 +31,15 @@
 		exit;
 	}
 	
+	// Redlines 
+	if ($returnpathname == "getServerLocationFromScript_06"){
+		echo  "/content/redlines/api_650/";
+		exit;
+	}
+
+
+
+
 
 	// FileFolder 
 	if ($returnpathname == "getServerLocationFromScript_03"){
@@ -44,6 +53,13 @@
 		echo  $httpHost . "/content/drawings/dwg/";
 		exit;
 	}
+
+	// FileFolder 
+	if ($returnpathname == "getServerLocationFromScript_05"){
+		echo  "/content/drawings/dwg/";
+		exit;
+	}
+
 
 
 

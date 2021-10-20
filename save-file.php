@@ -1,10 +1,25 @@
 <?php
 
+// Configuration file for CADViewer Community and CADViewer Enterprise version and standard settings
+require 'CADViewer_config.php';
+
+
 $fullPath = $_POST['file'];
 $file_content = $_POST['file_content'];
-$custom_content = $_POST['custom_content'];    // this is stuff to use to control content
 
-// echo $custom_content;
+$custom_content = "";
+try {
+	if (isset($_POST['custom_content'])){
+		$custom_content = $_POST['custom_content'];    // this is stuff to use to control content
+	}
+} catch (Exception $e) {
+	// do nothing
+}
+
+
+
+
+//echo $custom_content;
 
 $base64 = 0;
 
@@ -13,12 +28,28 @@ try {
 		$base64 = $_POST['base64'];		
 	}
 } catch (Exception $e) {
-	// do nothing, base64 is just not defined
+	// do nothing
 }
 
 if ($base64==1){
 	$file_content = base64_decode($file_content);	
 }
+
+
+$listtype = "";
+try {
+	if (isset($_POST['listtype'])) {
+		$listtype = $_POST['listtype'];	
+	}
+} catch (Exception $e) {
+	// do nothing
+}
+
+// we user a server side path 
+if ($listtype == "serverfolder"){
+	$fullPath = $home_dir . $fullPath;
+}
+
 
 
 $fullPath = urldecode($fullPath);

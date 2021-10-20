@@ -13,9 +13,10 @@
 //  Windows
 	$home_dir = "C:/xampp/htdocs/cadviewer";
 
+//  MOST PATHS ARE SET UP BASED ON HttpHost and home_dir    (Users can change this setting if an implementation needs to split up locations)
 
-//  ALL PATHS ARE SET UP BASED ON HttpHost and home_dir    (Users can change this setting if an implementation needs to split up locations)
-
+// NEW  we make an $home_dir_app  to give the user the ability to freely move $fileLocation + $converterLocation away from web-structure
+	$home_dir_app = "C:/xampp/htdocs/cadviewer/";
 
 
 //  URL to the location of controlling php files

@@ -53,6 +53,33 @@
     $callback ='tms_restful_api';
 	$json_data = "";
 
+
+    if(!empty($_GET['request']))
+    {
+//		if ($debug)	echo "_GET['tms_restful_api'] is set ";
+		if ($debug){
+			fwrite($fd_log, "_GET['request'] is set \r\n");
+		}
+        $request = $_GET['request'];
+		//$json_data = $_GET['json'];
+		$json_data = urldecode ( $request );
+		//echo $json_data;
+		if (empty($json_data)){
+			$wrong_post_format = 1;
+			$error_response = "{\"completedAction\":\"none\",\"errorCode\":\" \POST variable $_POST[request] is not defined \"}";
+			//echo $error_response;
+			// 2016-01-28 changed to be wrapped in return method
+			echo $callback.'(' . json_encode($error_response) . ')';
+			exit;
+		}
+		echo $json_data;
+		exit;
+    }
+
+
+
+
+
     if(!empty($_GET['tms_restful_api']))
     {
 //		if ($debug)	echo "_GET['tms_restful_api'] is set ";
@@ -848,7 +875,6 @@
 		}
 
 	//	$command_line =	$engine_path;     
-
 		$command_line =	"\"" .  $engine_path . "\"";    // 6.5.20
 
 		// add input file
@@ -875,7 +901,7 @@
 				fwrite($fd_log, "pdf_creaton outfile \$fname:  $fname  \r\n");
 			}
 			$subfolder = rand();
-			mkdir($fileLocation . 'pdf/'. $subfolder);
+			mkdir($fileLocation . 'pdf/'. $subfolder, 0777, true);
 
 			$temp_file_name = 'pdf/' . $subfolder . '/' . $fname;
 			$outputFile	 =  $fileLocation  . $temp_file_name . '.' . $output_file_extension;
