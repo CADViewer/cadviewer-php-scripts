@@ -5,7 +5,6 @@
     This script provides a RESTful API interface for web application accessing
     Tailor Made Software Conversion and Data Extraction engines
 
-
    Input:
         $_GET  = JSON (jsonp)formatted request according to TMS REST Api specification
 		alternatively the content directly posted to the RESTful API, JSON formatted,
@@ -35,7 +34,6 @@
 
 	// we are setting the callback identifier to match the one defined in the originating document
 	// 2016-01-28
-
 	// create debug file
 	if ($debug) {
 		if ($fd_log = fopen ("call-Api_Conversion_log.txt", "a+")) {
@@ -75,9 +73,6 @@
 		echo $json_data;
 		exit;
     }
-
-
-
 
 
     if(!empty($_GET['tms_restful_api']))
@@ -1504,7 +1499,6 @@ set_time_limit(240);
 
 			if ( $contentresponse == 'file'){
 				$embed_cont = "";
-//				$cont_loc3= $fileLocationUrl  . 'f' . $temp_file_name . '.' . $output_file_extension;
 				$cont_loc3= $fileLocationUrl  . $temp_file_name . '.' . $output_file_extension;
 			}
 

@@ -1,67 +1,29 @@
 <?php
 
-//  New: Use this code to find $httpHost and $home_dir based on current location, if under /cadviewer/
-	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-	$pos1 = stripos($actual_link, "/cadviewer/");
-	$httpHost = substr($actual_link, 0, $pos1+ 11);
 
-	$currentpath = __FILE__;
-	$pos1 = stripos($currentpath, "cadviewer");
-	$home_dir = substr($currentpath, 0, $pos1+ 10);
-
-//  Http Host   - note use direct setting if path different from /cadviewer/. 
+//  Http Host
 //  URL to the location of home directory the converter infrastructure
-//	$httpHost = "http://localhost/cadviewer";
+//  Windows   Linux
+	$httpHost = "http://localhost/cadviewer";
 
-//  Home directory, the local path corresponding to the http host - note use direct setting if path different from cadviewer. 
-//  Windows
-//	$home_dir = "/xampp/htdocs/cadviewer";
+
+//  Home directory, the local path corresponding to the http host
 //  Linux
-//	$home_dir = "/var/www/html/cadviewer";
+//	$home_dir = "/var/www/htdocs/cadviewer";
+//  Windows
+	$home_dir = "/xampp/htdocs/cadviewer";
 
+//  MOST PATHS ARE SET UP BASED ON HttpHost and home_dir    (Users can change this setting if an implementation needs to split up locations)
 
-//MOST PATHS ARE SET UP BASED ON HttpHost and home_dir    (Users can change this setting if an implementation needs to split up locations)
 // NEW  we make an $home_dir_app  to give the user the ability to freely move $fileLocation + $converterLocation away from web-structure
-	$home_dir_app = $home_dir;
-
-
-// set the platform for /converter subfolder
-	$platform = "windows";
-//	$platform = "linux";
-	
-//  Conversion engines executables - names stays stable with each upgrade of conversion engines:
-// 	Linux
-//	$ax2020_executable = "ax2022_L64_22_07_57c";
-//	$ax2020_executable = "ax2022_L64_22_11_59";
-// 	Windows
-	$ax2020_executable = "AX2022_W64_22_11_59.exe";
-
-//  USE svgz compression
-	$svgz_compress = false;   // default is false
-
-
-//  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
-// 	Linux
-//	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
-// 	Windows
-	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
-
-//  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
-// 	Linux
-//	$linklist2022_executable = "DwgMerge_W32_20_01_05.exe";
-// 	Windows
-	$linklist2022_executable = "LinkList_2022_W32_22_07_15.exe";
-
-
-
-
-
-
+	$home_dir_app = "C:/xampp/htdocs/cadviewer/";
 
 
 //  URL to the location of controlling php files
 //  Windows  Linux
 	$httpPhpUrl = $httpHost . "/php/";
+
+
 
 //  location of created files and temporary file folder
 //  Linux Windows
@@ -73,22 +35,45 @@
 	$fileLocationUrl = $httpHost . "/converters/files/";
 
 
-//  Path to the location of the AutoXchange AX2022 converter infrastructure
-	$converterLocation = $home_dir . "/converters/ax2022/".$platform."/";
+
+//  Path to the location of the AutoXchange AX2020 converter infrastructure
+//  Linux
+//	$converterLocation = $home_dir . "/converters/ax2022/linux/";
+//	$converterLocation = $home_dir . "/converters/community/libredwg/linux/";
+
+//  Windows
+	$converterLocation = $home_dir . "/converters/ax2022/windows/";
+//	$converterLocation = $home_dir . "/converters/community/libredwg/windows/";
 
 
-//  Path to the location of the DWGMerge 2019 converter infrastructure
-	$dwgmergeLocation = $home_dir . "/converters/dwgmerge2022/".$platform."/";
 
-//  Path to the location of the Linklist converter infrastructure
-	$linklistLocation = $home_dir . "/converters/linklist2022/".$platform."/";
+
+//  Conversion engines executables - names stays stable with each upgrade of conversion engines:
+// 	Linux
+//	$ax2020_executable = "ax2022_L64_22_07_57c";
+// 	Windows
+	$ax2020_executable = "AX2022_W64_22_10_58a.exe";
+
+
+
+//  USE svgz compression
+	$svgz_compress = false;   // default is false
+
 
 
 //  Conversion engines executables - Community Version
+// 	Linux
+//	$ax2020_executable = "ax2019_L64_19_04_06";
+// 	Windows
 	$community_executable = "dwg2SVG.exe";
 
+
 //  Path to the location of the license key axlic.key file, typically this is the same location as AX2020
-	$licenseLocation = $home_dir . "/converters/ax2022/".$platform."/";
+// 	Linux Windows
+//	$licenseLocation = $home_dir . "/converters/ax2022/linux/";
+//  Windows
+	$licenseLocation = $home_dir . "/converters/ax2022/windows/";
+
 
 
 //  Path to the XRef locations for external referenced drawings
@@ -96,11 +81,13 @@
 	$xpathLocation = $home_dir . "/converters/files/";
 
 	
+
 //  Name of PHP document that controls call-back file-transfer to CADViewerJS
 	$callbackMethod = "getFile_09.php";
 
 //  Debug parameter to check installation - false for normal operation, if true, the document will echo debug information, - no drawings will be displayed -
 	$debug = TRUE;
+
 
 //  We want bat processing on Windows, to set CODEPAGE for Asian and Chinese UNICODE
 	$windowsbatprocessing = FALSE;
@@ -113,6 +100,10 @@
 
 
 // Pdf converter folder
+//  Linux
+//	$pdfConverterFolder = $home_dir. "/converters/pdf_converter";
+
+//  Windows
 	$pdfConverterFolder = $home_dir. "/converters/pdf_converter";
 
 
@@ -128,6 +119,7 @@
 //	$pdfGetPagesExecutable = "run_pdftosvg_pages.bash";
 //  Windows
 	$pdfGetPagesExecutable = "run_pdftosvg_pages";
+	
 	
 
 // Batik install folder
@@ -155,6 +147,7 @@
 
 	
 	
+	
 // SVG to PDF converter batch executable
 //  Linux
 //	$pdfBatchExecutable = "run_svg2pdf.bash";
@@ -173,7 +166,6 @@
 //  Windows
 	$pdfSplitExecutable = "run_splitpdf";
 
-
 // PDF merge batch executable
 //  Linux
 //	$pdfsMergeExecutable = "run_mergepdfs.bash";
@@ -186,5 +178,37 @@
 	$pdfboxVersionSplitMerge = "2.0.9";
 	
 		
+//  Path to the location of the DWGMerge 2019 converter infrastructure
+//  Linux
+//	$dwgmergeLocation = $home_dir . "/converters/dwgmerge2019/linux/";
+//  Windows
+	$dwgmergeLocation = $home_dir . "/converters/dwgmerge2022/windows/";
+
+
+//  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
+// 	Linux
+//	$dwgmerge2019_executable = "DwgMerge_W32_19_01_02";
+// 	Windows
+	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
+	
+
+
+//  Path to the location of the DWGMerge 2019 converter infrastructure
+//  Linux
+//	$linklistLocation = $home_dir . "/converters/linklist2022/linux/";
+//  Windows
+	$linklistLocation = $home_dir . "/converters/linklist2022/windows/";
+
+//  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
+// 	Linux
+//		$linklist2020_executable = "DwgMerge_W32_20_01_05.exe";
+// 	Windows
+	$linklist2022_executable = "LinkList_2022_W32_22_07_15.exe";
+	
+	
+	
 		
+	
+	
+	
 ?>
