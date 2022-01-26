@@ -19,9 +19,17 @@ PHP scripts for CADViewer control of back-end converters.
 
 Install CADViewer and back-end CAD Converters, follow installation instructions from the documentation link below.
 
-As a preferred alternative, install a full server of CADViewer including both script library and converters in a preferred folder-structure. https://github.com/CADViewer/cadviewer-script-library
+A: As a preferred alternative, install a full server of CADViewer including both script library and converters in a preferred folder-structure. https://github.com/CADViewer/cadviewer-script-library
 
-Once 2: and 3: is installed, typically the HTML samples under /cadviewer/html/ can be run from a web-browser. Use http://localhost/cadviewer/html/CADViewer_fileloader_670.html as a starting point (assuming that your have installed under http://localhost).
+B: Once 2: and 3: is installed, typically the HTML samples under /cadviewer/html/ can be run from a web-browser. Use http://localhost/cadviewer/html/CADViewer_fileloader_670.html as a starting point (assuming that your have installed under http://localhost).
+
+
+C: If changing the location of the installation, please update ***/cadviewer/php/CADViewer_config.php***. The top part of this config file contains automated settings of ***$home_dir*** (cadviewer install folder) and ***$httpHost*** (cadviewer install folder url), but they can be manually overwritten. It also contains variables for the install platform. 
+
+D: If updating any of executables in the install structure, then update their variable names in  ***/cadviewer/php/CADViewer_config.php**. These varaiables can be found with ***"_executable"*** in the variable name, for example ***"ax2020_executable"***. 
+
+E: Please note the variable controls in the HTML documents as described below in ***Troubleshooting***.
+
 
 
 
