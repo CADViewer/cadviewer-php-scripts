@@ -72,8 +72,6 @@ Open the debug file: ***/cadviewer/php/call-Api_Conversion_log.txt***
 
 A. check that all paths and executable names correspond to server settings, if not modify ***/cadviewer/php/CADViewer_config.php***.
 
-<br>
-
 B: identify the command line string for the conversion, it will be directly after **before call to exec:** 
 
 
