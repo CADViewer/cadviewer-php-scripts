@@ -71,7 +71,9 @@ Open the debug file: ***/cadviewer/php/call-Api_Conversion_log.txt***
 
 A. check that all paths and executable names correspond to server settings, if not modify ***/cadviewer/php/CADViewer_config.php***.
 
-B: identify the command line string for the conversion, it will be directly after **before call to exec:** :
+<br>
+
+B: identify the command line string for the conversion, it will be directly after **before call to exec:** 
 
 
 <pre style="line-height: 110%">
@@ -80,7 +82,7 @@ B: identify the command line string for the conversion, it will be directly afte
 
 </pre>
 
-Run this from a command line prompth. Checks if there are any permission or path issues. Change in ***/cadviewer/php/CADViewer_config.php*** or file-name in the calling HTML document.
+Run this from a command line prompt. Checks if there are any permission or path issues. Change in ***/cadviewer/php/CADViewer_config.php*** or file-name in the calling HTML document.
 
 
 
