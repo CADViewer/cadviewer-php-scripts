@@ -1,5 +1,8 @@
 <?php
 
+require 'CADViewer_config.php';
+
+
 $http_origin = '';
 
 if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -9,17 +12,26 @@ elseif (isset($_SERVER['HTTP_REFERER'])) {
   $http_origin = $_SERVER['HTTP_REFERER'];
 }
 
-$allowed_domains = array(
-  'http://localhost:8080',
-  'http://localhost',
-  'https://onlinedemo.cadviewer.com',
-);
-
-if (in_array($http_origin, $allowed_domains))
-{
+// allow CORS or control it
+if (true){
     header("Access-Control-Allow-Origin: $http_origin");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
     header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+}
+else{
+
+	$allowed_domains = array(
+	  'http://localhost:8080',
+	  'http://localhost:8081',
+	  'http://localhost',
+	);
+
+	if (in_array($http_origin, $allowed_domains))
+	{
+		header("Access-Control-Allow-Origin: $http_origin");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+		header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+	}	
 }
 
 
@@ -33,6 +45,7 @@ $replyto = "";
 $to_mail = "";
 $mail_title = "";
 $mail_message = "";
+$listtype = "";
 
 
 
@@ -46,6 +59,7 @@ if (!empty($_GET)) {
 	$to_mail = $_GET['to_mail'];
 	$mail_title = $_GET['mail_title'];
 	$mail_message = $_GET['mail_message'];
+	$listtype = $_GET['listtype'];
 }
 else{
 	$pdf_file = $_POST['pdf_file'];
@@ -57,6 +71,7 @@ else{
 	$to_mail = $_POST['to_mail'];
 	$mail_title = $_POST['mail_title'];
 	$mail_message = $_POST['mail_message'];
+	$listtype = $_POST['listtype'];
 }
 
 
@@ -64,6 +79,12 @@ $email  = $to_mail;
 $title   = $mail_title; 
 $message = $mail_message; 
 //echo $email;
+
+// we user a server side path 
+if ($listtype == "serverfolder"){
+	$pdf_file = $home_dir . $pdf_file;
+}
+
 
 $file = $pdf_file;
 $content = file_get_contents( $file);
