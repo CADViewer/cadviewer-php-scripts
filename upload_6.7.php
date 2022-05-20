@@ -13,7 +13,7 @@ elseif (isset($_SERVER['HTTP_REFERER'])) {
 }
 
 // allow CORS or control it
-if (true){
+if (false){
     header("Access-Control-Allow-Origin: $http_origin");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
     header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
@@ -24,6 +24,8 @@ else{
 	  'http://localhost:8080',
 	  'http://localhost:8081',
 	  'http://localhost',
+	  'http://onlinedemo.cadviewer.com',
+
 	);
 
 	if (in_array($http_origin, $allowed_domains))
@@ -35,8 +37,6 @@ else{
 }
 
 
-
-$up=new FileUploader();
 $path=$_GET['ax-file-path'];
 $ext=$_GET['ax-allow-ext'];
 
@@ -55,15 +55,14 @@ if ($listtype == "serverfolder"){
 	$path = $home_dir . $path;
 }
 
-//echo $fullPath . "  " . $ext . "XXX";
+//echo $path . "  " . $ext . "XXX";
 
-
-
+$up=new FileUploader();
 $res=$up->uploadfile($path,$ext);
 
-/*==================================================================
- * Upload class for handling upload files
- *=================================================================*/
+//==================================================================
+// Upload class for handling upload files
+//=================================================================
 class AsyncUpload
 {
     function save($remotePath,$allowext,$add)
@@ -151,8 +150,11 @@ class FileUploader
 			echo "width=" .$size[0] . " height=" . $size[1] . " ";
 			//$size = implode("|",$size);
 		}
-		catch(err){}
+		catch(Exception $e){ }
         //echo  "upload" . $msg . $remotePath . $_GET['ax-file-name'] . " " ;
         return $msg;  // "upload" . $msg . $remotePath . $_GET['ax-file-name'] . " " . ;
     }
 }
+
+
+?>
