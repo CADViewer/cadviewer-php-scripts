@@ -33,7 +33,7 @@
 // 	Linux
 //	$ax2020_executable = "ax2023_L64_23_02_78";
 // 	Windows
-	$ax2020_executable = "AX2023_W64_23_02_78.exe";
+	$ax2020_executable = "AX2023_W64_23_03_80.exe";
 
 //  USE svgz compression
 	$svgz_compress = false;   // default is false
@@ -72,8 +72,8 @@
 	$fileLocationUrl = $httpHost . "/converters/files/";
 
 
-//  Path to the location of the AutoXchange AX2022 converter infrastructure
-	$converterLocation = $home_dir . "/converters/ax2022/".$platform."/";
+//  Path to the location of the AutoXchange ax2023 converter infrastructure
+	$converterLocation = $home_dir . "/converters/ax2023/".$platform."/";
 
 
 //  Path to the location of the DWGMerge 2019 converter infrastructure
@@ -87,7 +87,7 @@
 	$community_executable = "dwg2SVG.exe";
 
 //  Path to the location of the license key axlic.key file, typically this is the same location as AX2020
-	$licenseLocation = $home_dir . "/converters/ax2022/".$platform."/";
+	$licenseLocation = $home_dir . "/converters/ax2023/".$platform."/";
 
 
 //  Path to the XRef locations for external referenced drawings
