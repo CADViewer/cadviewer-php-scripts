@@ -2,42 +2,6 @@
 	
 	require 'CADViewer_config.php';
 
-
-
-$http_origin = '';
-
-if (isset($_SERVER['HTTP_ORIGIN'])) {
-  $http_origin = $_SERVER['HTTP_ORIGIN'];
-}
-elseif (isset($_SERVER['HTTP_REFERER'])) {
-  $http_origin = $_SERVER['HTTP_REFERER'];
-}
-
-// allow CORS or control it
-if (true){
-    header("Access-Control-Allow-Origin: $http_origin");
-    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-    header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
-}
-else{
-
-	$allowed_domains = array(
-	  'http://localhost:8080',
-	  'http://localhost:8081',
-	  'http://localhost',
-	);
-
-	if (in_array($http_origin, $allowed_domains))
-	{
-		header("Access-Control-Allow-Origin: $http_origin");
-		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-		header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
-	}	
-}
-
-
-
-
 	$serverPath = $_POST['serverPath'];
 	$numberOfFiles = 1;
 	$originalFileName = $_POST['org_fileName_0'];
@@ -90,7 +54,7 @@ else{
 			$final_fileName = $fileNameArray[$i] . '.pdf';
 
 			// echo 'calling AutoXchange';			
-			$command_line = $converterLocation . $ax2020_executable . ' -i="' .$home_dir . '/converters/files/' . $fileNameArray[$i] .'.png"' . ' -o="' . $home_dir . '/converters/files/' . $final_fileName .'" -f=pdf -' . $paperSizeArray[$i] .' -' . $rotationArray[$i];
+			$command_line = $converterLocation . $ax2023_executable . ' -i="' .$home_dir . '/converters/files/' . $fileNameArray[$i] .'.png"' . ' -o="' . $home_dir . '/converters/files/' . $final_fileName .'" -f=pdf -' . $paperSizeArray[$i] .' -' . $rotationArray[$i];
 			
 			//echo $command_line;
 

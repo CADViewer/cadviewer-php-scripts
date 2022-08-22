@@ -1,0 +1,228 @@
+list directory  v2.0.02  
+ r
+Path /content/drawings/dwg/  listtype XX serverfolder XX homedir /xampp/htdocs/cadviewer_6_4 pathURL  
+Path /xampp/htdocs/cadviewer_6_4/content/drawings/dwg/  listtype XX serverfolder XX  
+. r
+.. r
+00c_a1.dwg r
+00c_a1.svg r
+00c_a2.dwg r
+00c_a3.dwg r
+01 - A0 Cover Sheet.dwf r
+01_Architectual.dwg r
+01_건축_hangul_inputname_box.dwg r
+01_건축_hangul_inputname_min.dwg r
+02 - A1.1 Floor Plan A.dwf r
+02_hangul_inputname_box.dwg r
+043 Fakkelgården plan 1-fdv_ep_NY.dxf r
+043 Fakkelgården plan 1-fdv_ep_NY.zip r
+1.bak r
+1.dwg r
+108050000-R8U-8300-F024-R00 (2).pdf r
+108050000-R8U-8300-F024-R00.dwg r
+108050000-R8U-8300-F024-R00.dwl r
+108050000-R8U-8300-F024-R00.dwl2 r
+10b6640.dgn r
+11-Revised_Area_Calculation.dwf r
+1628231112361.dwg r
+16_dxf.svg r
+16_fmap01.svg r
+16_R2018.svg r
+18-01-07-MONTCE1000.dwg r
+18-01-07-MONTCE1000.dwl r
+18-01-07-MONTCE1000.dwl2 r
+1st floor architectural.dwg r
+1st floor plan.dwg r
+1_50c_reduced.svg r
+1_50c__Layout01.svg r
+1_reduced.bak r
+1_reduced.dwg r
+2.10_PJ1359-DLC-SD-LD-913_REV.00_PE.dwf r
+2.dwg r
+2000flood_2003.dgn r
+2020-06-11-Halle 071_EG.dwg r
+2020-06-12-Halle 90B-7.OG.dwg r
+2020-06-12-Halle 90B-7.OG.svg r
+22.041.000-0-L02-002R2.DWG r
+2835 Madison 1-14-09.dwf r
+3 A-ARJ19-052-ARCHITECTURAL_TYPE 1.2B_2019.09.dwf r
+3 A-ARJ19-052-ARCHITECTURAL_TYPE 1.2B_2019.09.svgpostbind.dwg r
+3.DWG r
+3000L3.svg r
+3000L3_01.svg r
+3410_Shanghai_Bund Center_ Floor 46_ FURNITURE PLAN_201021.dwg r
+52DFD2EC012A4A71A72E7EF7F6693F8A.png r
+530258-1504.dwg r
+530258-1504.dwl r
+530258-1504.dwl2 r
+589642_10-b.dwg r
+5krotob0-review (1).svg r
+5krotob0-review.dwf r
+7000 Area Merged.dgn r
+734_00046070.DWG r
+A-304956-WK_SHT_002.jpg r
+A-319097-WK.dwg r
+A1005.dwg r
+aaa.bak r
+aaa.dwg r
+aaa.dwl r
+aaa.dwl2 r
+aaa.dxf r
+aaa.svg r
+aaa_1.dxf r
+aaa_55cx.svg r
+aaa_55e_tltag_ROOMNUMBER.svg r
+aaa_la.svg r
+aaa_rl.rl r
+aaa_rl.svg r
+aaa_rl_01.svg r
+ACM_P282_AB-EB_BDS_DR_8100001_A.pdf r
+AL038_67a-v2.svg r
+AL038_BIRMINGHAM OFFICE_05 (Updated).rl r
+AL038_BIRMINGHAM OFFICE_05 (Updated).svg r
+amdm005-4e5203AF.dgn r
+amdm005-4e5203AF_53c_last.svg r
+amdm005-4e5203AF_53c_last.svgz r
+atlaswhole2D.svg r
+AutoCAD______2 (1).dwg r
+ax2020_changes.pdf r
+B-2-16-0505-K-CC0064508_R0.DWG r
+B-2-16-0505-K-CC0064508_R2.DWG r
+background-01-gray.png r
+base_xref_json.dwg r
+bldg-S16-XNumbers.dgn r
+BRU.dwg r
+CADViewer_JS-AutoXchange_-_Generating_Automated_Hotspots.pdf r
+chris-drawing-first-floor_11_60.svg r
+City_map.dwg r
+compare_1_2.svg r
+compare_1_2g.svg r
+compare_a1-redbeansoft.dwg r
+compare_a1.dwg r
+compare_a2-redbeansoft.dwg r
+compare_a2.dwg r
+compare_a2_a1.svg r
+compare_a3-redbeansoft.dwg r
+compare_a3.dwg r
+CRAPermit_CRA1381.pdf r
+CV-SHG-46.dwg r
+CV-SHG-46.svg r
+D-102613-01.dwg r
+dwg_files r
+E2601B.dwg r
+Est. Correccion 02-09-2020 (10).Dwf r
+f1508673457.svg r
+FA-10-000001.dwg r
+FA-10-000001.pdf r
+FA-10-1.bak r
+FA-10-1.dwg r
+ff-ia.svg r
+filenames.rw r
+fire_bitmaps r
+G1098.dwf r
+G21-00835 - Cad.dwg r
+historical-center-of-krasnoyarsk.dwg r
+hq17_.bak r
+hq17_.dwg r
+I-DE-3010.66-1415-140-SXX-036_A.DGN r
+I25-A-2051.DWG r
+image001.png r
+IMD-SK-1164 (Drydocks Yard Layout plan 2021)-AMENDED.dwg r
+ISO_001.dwg r
+JMCHNcRC-review.dwf r
+KadenaMFH_Courtney-Mctoureous.dwg r
+KadenaMFH_Courtney-Mctoureous_51b.svg r
+KAD_03 units cm.dwg r
+KAD_03 units cm.dwl r
+KAD_03 units cm.dwl2 r
+KAD_03 units cm.svg r
+KAD_03 units inch.dwg r
+KAD_03 units inch.dwl r
+KAD_03 units inch.dwl2 r
+KAD_03 units mm.dwg r
+LAV - LAV-GUD - 978 - PLANS GUIDE LAVAGE - 154944.dwg r
+layout_area_processing_01.dwg r
+layout_area_processing_02.dwg r
+layout_area_processing_03_tltag.svg r
+layout_area_processing_04_tltag.rl r
+layout_area_processing_04_tltag.svg r
+layout_area_processing_04_tltag_55e.svg r
+layout_area_processing_06_tltag_55e.svg r
+LB77282_S030.DWG r
+LB77282_S030.TIF r
+lines_only.bak r
+lines_only.dwg r
+linetypes.dwg r
+linetypes_50d.svg r
+M0124-2001 - GROUND FLOOR.dwg r
+M0124-v2.dwg r
+ma1000_133.dwg r
+MAJ-P260-BDA-MF-000001.pdf r
+measure_redbeansoft.dwg r
+measure_redbeansoft_02.bak r
+measure_redbeansoft_02.dwg r
+measure_redbeansoft_03.bak r
+measure_redbeansoft_03.dwg r
+measure_replace_dim_clean01.bak r
+measure_replace_dim_clean01.dwg r
+measure_replace_dim_clean01.dwl r
+measure_replace_dim_clean01.dwl2 r
+measure_replace_dim_redbeansoft.dwg r
+measure_replace_dim_redbeansoft_02.dwg r
+measure_template.dwg r
+nf059 r
+NF059.dwg r
+NF059671 - PLA005 -  - 2021 - 5.dwg r
+NF059788-12348.dwg r
+NF059788-12348.dwl r
+NF059788-12348.dwl2 r
+NF059788-12348.svgz r
+NFt2.svgz r
+NV_Project.rl r
+NV_Project.svg r
+one_of_simple.dwg r
+one_of_simpl_hlall_x.svg r
+original_hpe.dwg r
+Overhead_Electrical.svg r
+P029_CTT_Layout_piso6-16-12-2019.dwg r
+P2_Hotel_L07_A03.dwg r
+PEM_HLAYER.dwg r
+PEM_HLAYER.dwl r
+PEM_HLAYER.dwl2 r
+pgrd30x42horz.dwg r
+Plantmap.dwg r
+prodfile.dwf r
+PTA_27495.dwg r
+PTA_27495.dwl r
+PTA_27495.dwl2 r
+PWR07_2.OG.pdf r
+redbean_01.dwg r
+Ref1 r
+Ref2 r
+RMD004c.dwg 2010.dwg r
+Sample.dwg r
+sample_gnbnet.dwg r
+sample_gnbnet.dwl r
+sample_gnbnet.dwl2 r
+sattva_5th.dwg r
+simple_shapes_01.dwg r
+table1fpathmap.svg r
+Test01.dxf r
+town_planning.dwg r
+town_planning.dwl r
+town_planning.dwl2 r
+try_txt01.dwg r
+VESSEL01.dwg r
+vessel01_uni.svg r
+vf1565.dwf r
+vu1565.dwf r
+XG-H-LT P2 Grey.DWG r
+XG-H-LT P2.DWG r
+XG-H-MH Grey.dwg r
+XG-H-MH.dwg r
+xlbpc-l6-f01_v2.dwg r
+xlbpc-l6-f01_v3.dwg r
+xlbpc-l6-f01_v3.svg r
+xlbpc-l6-f01_v3z.svgz r
+ZT3kanji.svg r
+_3000L3.svg r

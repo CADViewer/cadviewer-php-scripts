@@ -29,6 +29,7 @@ if (in_array($http_origin, $allowed_domains))
 
 $fullPath = "";
 $loadtype = "";
+$listtype = "";
 
 if (!empty($_GET)) {
 	if (isset($_GET['file'])) {
@@ -55,7 +56,21 @@ else{
 	}
 }
 
- // echo "XX" . $loadtype ."    languagefile";
+
+if (!empty($_GET)) {
+	if (isset($_GET['listtype'])) {
+		$listtype = $_GET['listtype'];
+	}
+}
+else{
+    // no data passed by get
+	if (isset($_POST['listtype'])) {
+		$listtype = $_POST['listtype'];
+	}
+}
+
+
+//echo "XX loadtype:" . $loadtype ."    listtype:" . $listtype. "  ". $fullPath;
 
 // load languages app dir
 if ( $loadtype == "languagefile"){
@@ -73,7 +88,7 @@ if ( $loadtype == "serverfilelist"){
 }
 
 
-//echo "  " . $fullPath;
+//echo "  fullPath:" . $fullPath. "XYZXYZ";
 
 $contents = '';
 

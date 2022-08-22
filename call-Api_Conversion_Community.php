@@ -263,7 +263,7 @@
 			[
 				"converter" => "AutoXchange AX2020",
 				"version" => "V1.00",
-				"executable" => $ax2020_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],

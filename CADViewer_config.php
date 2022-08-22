@@ -11,11 +11,11 @@
 
 //  Http Host   - note use direct setting if path different from /cadviewer/. 
 //  URL to the location of home directory the converter infrastructure
-//	$httpHost = "http://localhost/cadviewer";
+	$httpHost = "http://localhost/cadviewer/";
 
 //  Home directory, the local path corresponding to the http host - note use direct setting if path different from cadviewer. 
 //  Windows
-//	$home_dir = "/xampp/htdocs/cadviewer";
+	$home_dir = "/xampp/htdocs/cadviewer";
 //  Linux
 //	$home_dir = "/var/www/html/cadviewer";
 
@@ -31,9 +31,9 @@
 	
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$ax2020_executable = "ax2023_L64_23_05_85";
+//	$ax2020_executable = "ax2023_L64_23_05_88";
 // 	Windows
-	$ax2020_executable = "AX2023_W64_23_05_85.exe";
+	$ax2023_executable = "AX2023_W64_23_05_88.exe";
 
 //  USE svgz compression
 	$svgz_compress = false;   // default is false
@@ -47,9 +47,14 @@
 
 //  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$linklist2022_executable = "DwgMerge_W32_20_01_05.exe";
+//	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
 // 	Windows
-	$linklist2022_executable = "LinkList_2022_W32_22_07_15.exe";
+	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
+
+
+
+
+
 
 
 
@@ -67,15 +72,15 @@
 	$fileLocationUrl = $httpHost . "/converters/files/";
 
 
-//  Path to the location of the AutoXchange ax2023 converter infrastructure
+//  Path to the location of the AutoXchange AX2023 converter infrastructure
 	$converterLocation = $home_dir . "/converters/ax2023/".$platform."/";
 
 
 //  Path to the location of the DWGMerge 2019 converter infrastructure
-	$dwgmergeLocation = $home_dir . "/converters/dwgmerge2022/".$platform."/";
+	$dwgmergeLocation = $home_dir . "/converters/dwgmerge2023/".$platform."/";
 
 //  Path to the location of the Linklist converter infrastructure
-	$linklistLocation = $home_dir . "/converters/linklist2022/".$platform."/";
+	$linklistLocation = $home_dir . "/converters/linklist2023/".$platform."/";
 
 
 //  Conversion engines executables - Community Version

@@ -244,28 +244,28 @@
 			[
 				"converter" => "AutoXchange AX2020",
 				"version" => "V1.00",
-				"executable" => $ax2020_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "AutoXchange AX2022",
 				"version" => "V2.00",
-				"executable" => $ax2020_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "AutoXchange AX2020 DEMO",
 				"version" => "V1.00",
-				"executable" => $ax2020_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "LinkList 2020",
 				"version" => "V2.00",
-				"executable" => $linklist2022_executable,
+				"executable" => $linklist2023_executable,
 				"location" => $linklistLocation,
 				"status" => "active"
 			]
