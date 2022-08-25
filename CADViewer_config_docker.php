@@ -1,7 +1,15 @@
 <?php
 
+
+// NOTE: USE THIS FOR LOCALHOST RUNNING HTTP!!!!!!!
+// $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
 //  New: Use this code to find $httpHost and $home_dir based on current location, if under /cadviewer/
-	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	$actual_link = "https" . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	
+	// NOTE:  nginx container / docker container running, will internally run http, but externally https: therefore
+	//   $httpPhpUrl  will be wrong unless forced to https 
+
 	$pos1 = stripos($actual_link, "/cadviewer/");
 	$httpHost = substr($actual_link, 0, $pos1+ 11);
 
