@@ -39,9 +39,9 @@
 	
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$ax2023_executable = "ax2023_L64_23_05_88";
+//	$ax2023_executable = "ax2023_L64_23_08_92";
 // 	Windows
-	$ax2023_executable = "AX2023_W64_23_05_88.exe";
+	$ax2023_executable = "AX2023_W64_23_08_92.exe";
 
 //  USE svgz compression
 	$svgz_compress = false;   // default is false
@@ -60,8 +60,17 @@
 	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
 
 
+	// if checkorigin is false, all domains allowed * , if true, then checking from $allowed_domains
+	$checkorigin=false;
+	// allowed domains!
+	$allowed_domains = array(
+		'http://localhost:8080',
+		'http://localhost',
+		'*'
+	  );
 
-
+	// set to false for CADViewer 7.1.8 onwards,   true for previous versions of CADViewer
+	$jsonp_flag = false;
 
 
 

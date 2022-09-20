@@ -1,49 +1,108 @@
-NEW-FILE-CONVERSION-BEGIN   v2.0.01  
- r
+
+ NEW-FILE-CONVERSION-BEGIN   v7.1.7  
+ 
 Opening call-Api_Conversion_log.txt for new conversion: 
 before _ isset()x2  
-_GET['tms_restful_api'] is set 
 first in file   
-$json_data: {"action":"svg_creation","converter":"AutoXchange AX2020","version":"V1.00","contentType":"file","customConversionEndpointExtension":false,"contentLocation":"http://localhost/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg","contentFormat":"DWG","contentUsername":"","contentPassword":"","userLabel":"fromCADViewerJS","contentResponse":"stream","leaveStreamOnServer":0,"parameters":[{"paramName":"f","paramValue":"svg"},{"paramName":"last","paramValue":""},{"paramName":"fpath","paramValue":"/converters/ax2022/windows/fonts/"}]}   
-$json_request(conv):    
-AGENT operating_system_detection():  $agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36  
+$json_data:    
+$json_request(conv): ,   
+$temp_var is null:, this must be a post call, also:$jsonp_flag=, isset:1 request={"action":"svg_creation","converter":"AutoXchange AX2020","version":"V1.00","contentType":"file","customConversionEndpointExtension":false,"contentLocation":"http%3A%2F%2Flocalhost%2Fcadviewer%2F%2Fcontent%2Fdrawings%2Fdwg%2Fmeasure_template.dwg","contentFormat":"DWG","contentUsername":"","contentPassword":"","userLabel":"fromCADViewerJS","contentResponse":"stream","leaveStreamOnServer":0,"parameters":[{"paramName":"f","paramValue":"svg"},{"paramName":"last","paramValue":""}]}<end request>$json_data isset, requestconverter:AutoXchange AX2020 
+AGENT operating_system_detection():  $agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36  
 AGENT PHP_OS : WINNT
-$max: 3  
+$contentlocation:  http%3A%2F%2Flocalhost%2Fcadviewer%2F%2Fcontent%2Fdrawings%2Fdwg%2Fmeasure_template.dwg  
+$contentlocation:  http://localhost/cadviewer//content/drawings/dwg/measure_template.dwg  
+$max: 2  
 param f : svg  
-param fpath : /converters/ax2022/windows/fonts/  
-  $output_file_extension:svg   $param_string:  "-f=svg" -last "-fpath=/converters/ax2022/windows/fonts/"  
+  $output_file_extension:svg   $param_string:  "-f=svg" -last  
 We are setting $server_load:  1  
 after content location check $server_load:  1  , content-type: (file 
- location X004  contentlocation:/xampp/htdocs/cadviewer/content/drawings/dwg/Asbestos_drawing_01.dwg 
-X005 In action: contentype file: /xampp/htdocs/cadviewer/content/drawings/dwg/Asbestos_drawing_01.dwg  
+ location X004  contentlocation:/xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg 
+X005 In action: contentype file: /xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg  
 before download file  
- HELLO! /xampp/htdocs/cadviewer/converters/files/f971970932.dwg  
-$fullPath: /xampp/htdocs/cadviewer/converters/files/f971970932.dwg  
-$fullPath: /xampp/htdocs/cadviewer/converters/files/f971970932.dwg  
+ HELLO! /xampp/htdocs/cadviewer/converters/files/f721826292.dwg  
+$fullPath: /xampp/htdocs/cadviewer/converters/files/f721826292.dwg  
+$fullPath: /xampp/htdocs/cadviewer/converters/files/f721826292.dwg  
 AA: before setting $fullPath:  $server_load 1   $contenttype file 
-$fullPath: /xampp/htdocs/cadviewer/content/drawings/dwg/Asbestos_drawing_01.dwg  
+$fullPath: /xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg  
 $max_conv: 5  
 $engine_path: /xampp/htdocs/cadviewer/converters/ax2023/windows//AX2023_W64_23_05_89.exe  
 new $add_xpath    
 In loop to add xpath  
 after first loop $command_line_parameter_xpath: 0  
-$command_line: "/xampp/htdocs/cadviewer/converters/ax2023/windows//AX2023_W64_23_05_89.exe" "-i=/xampp/htdocs/cadviewer/content/drawings/dwg/Asbestos_drawing_01.dwg" "-o=/xampp/htdocs/cadviewer/converters/files/f971970932.svg"  "-f=svg" -last "-fpath=/converters/ax2022/windows/fonts/" "-lpath=/xampp/htdocs/cadviewer/converters/ax2023/windows/"  XXXXXXX  
+$command_line: "/xampp/htdocs/cadviewer/converters/ax2023/windows//AX2023_W64_23_05_89.exe" "-i=/xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg" "-o=/xampp/htdocs/cadviewer/converters/files/f721826292.svg"  "-f=svg" -last "-lpath=/xampp/htdocs/cadviewer/converters/ax2023/windows/"  XXXXXXX  
 library path before new env: /xampp/htdocs/cadviewer/converters/ax2023/windows/  
 this is the value we got setting the environment 1  
 getenv after putenv: /xampp/htdocs/cadviewer/converters/ax2023/windows/   
-before call to exec:  "/xampp/htdocs/cadviewer/converters/ax2023/windows//AX2023_W64_23_05_89.exe" "-i=/xampp/htdocs/cadviewer/content/drawings/dwg/Asbestos_drawing_01.dwg" "-o=/xampp/htdocs/cadviewer/converters/files/f971970932.svg"  "-f=svg" -last "-fpath=/converters/ax2022/windows/fonts/" "-lpath=/xampp/htdocs/cadviewer/converters/ax2023/windows/"     
+before call to exec:  "/xampp/htdocs/cadviewer/converters/ax2023/windows//AX2023_W64_23_05_89.exe" "-i=/xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg" "-o=/xampp/htdocs/cadviewer/converters/files/f721826292.svg"  "-f=svg" -last "-lpath=/xampp/htdocs/cadviewer/converters/ax2023/windows/"     
 before call to exec, engine_path:  /xampp/htdocs/cadviewer/converters/ax2023/windows//AX2023_W64_23_05_89.exe    
 current script owner: caspe    
-AGENT operating_system_detection():  $agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36  
+AGENT operating_system_detection():  $agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36  
 AGENT PHP_OS : WINNT
 operating_system_detection(): WINNT    
 exec return1  0   
 exec return1 check  0   
-unlink1  /xampp/htdocs/cadviewer/content/drawings/dwg/Asbestos_drawing_01.dwg   
-unlink2  /xampp/htdocs/cadviewer/converters/files/f971970932_ac1024.dwg   
-svg_creation   
-$json_response = "{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"\/xampp\/htdocs\/cadviewer\/content\/drawings\/dwg\/Asbestos_drawing_01.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f971970932&Type=svg\"}"  
-$post_request_flag  $callback. = jQuery223026570484848764564_1662019854909("{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"\/xampp\/htdocs\/cadviewer\/content\/drawings\/dwg\/Asbestos_drawing_01.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f971970932&Type=svg\"}")
+unlink1  /xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg   
+unlink2  /xampp/htdocs/cadviewer/converters/files/f721826292_ac1024.dwg   
+Q1 contentresponse  stream   
+Q2:svg_creation   
+Q4: $general_response{"completedAction":"svg_creation","errorCode":"E0","converter":"AutoXchange AX2020","version":"V1.00","userLabel":"fromCADViewerJS","contentLocation":"/xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg","contentResponse":"stream","contentStreamData":"http://localhost/cadviewer//php//getFile_09.php?remainOnServer=0&fileTag=f721826292&Type=svg"}   
+Q5: 0  1  $json_response"{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"\/xampp\/htdocs\/cadviewer\/content\/drawings\/dwg\/measure_template.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f721826292&Type=svg\"}"   
+$json_response = "{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"\/xampp\/htdocs\/cadviewer\/content\/drawings\/dwg\/measure_template.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f721826292&Type=svg\"}"  
+$post_request_flag=1 $json_response only  
+LAST BEFORE CALLBACK   
+ 
+ 
+
+ NEW-FILE-CONVERSION-BEGIN   v7.1.7  
+ 
+Opening call-Api_Conversion_log.txt for new conversion: 
+before _ isset()x2  
+first in file   
+$json_data:    
+$json_request(conv): ,   
+$temp_var is null:, this must be a post call, also:$jsonp_flag=, isset:1 request={"action":"svg_creation","converter":"AutoXchange AX2020","version":"V1.00","contentType":"file","customConversionEndpointExtension":false,"contentLocation":"http%3A%2F%2Flocalhost%2Fcadviewer%2F%2Fcontent%2Fdrawings%2Fdwg%2Fmeasure_template.dwg","contentFormat":"DWG","contentUsername":"","contentPassword":"","userLabel":"fromCADViewerJS","contentResponse":"stream","leaveStreamOnServer":0,"parameters":[{"paramName":"f","paramValue":"svg"},{"paramName":"last","paramValue":""}]}<end request>$json_data isset, requestconverter:AutoXchange AX2020 
+AGENT operating_system_detection():  $agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36  
+AGENT PHP_OS : WINNT
+$contentlocation:  http%3A%2F%2Flocalhost%2Fcadviewer%2F%2Fcontent%2Fdrawings%2Fdwg%2Fmeasure_template.dwg  
+$contentlocation:  http://localhost/cadviewer//content/drawings/dwg/measure_template.dwg  
+$max: 2  
+param f : svg  
+  $output_file_extension:svg   $param_string:  "-f=svg" -last  
+We are setting $server_load:  1  
+after content location check $server_load:  1  , content-type: (file 
+ location X004  contentlocation:/xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg 
+X005 In action: contentype file: /xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg  
+before download file  
+ HELLO! /xampp/htdocs/cadviewer/converters/files/f732449193.dwg  
+$fullPath: /xampp/htdocs/cadviewer/converters/files/f732449193.dwg  
+$fullPath: /xampp/htdocs/cadviewer/converters/files/f732449193.dwg  
+AA: before setting $fullPath:  $server_load 1   $contenttype file 
+$fullPath: /xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg  
+$max_conv: 5  
+$engine_path: /xampp/htdocs/cadviewer/converters/ax2023/windows//AX2023_W64_23_08_92.exe  
+new $add_xpath    
+In loop to add xpath  
+after first loop $command_line_parameter_xpath: 0  
+$command_line: "/xampp/htdocs/cadviewer/converters/ax2023/windows//AX2023_W64_23_08_92.exe" "-i=/xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg" "-o=/xampp/htdocs/cadviewer/converters/files/f732449193.svg"  "-f=svg" -last "-lpath=/xampp/htdocs/cadviewer/converters/ax2023/windows/"  XXXXXXX  
+library path before new env: /xampp/htdocs/cadviewer/converters/ax2023/windows/  
+this is the value we got setting the environment 1  
+getenv after putenv: /xampp/htdocs/cadviewer/converters/ax2023/windows/   
+before call to exec:  "/xampp/htdocs/cadviewer/converters/ax2023/windows//AX2023_W64_23_08_92.exe" "-i=/xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg" "-o=/xampp/htdocs/cadviewer/converters/files/f732449193.svg"  "-f=svg" -last "-lpath=/xampp/htdocs/cadviewer/converters/ax2023/windows/"     
+before call to exec, engine_path:  /xampp/htdocs/cadviewer/converters/ax2023/windows//AX2023_W64_23_08_92.exe    
+current script owner: caspe    
+AGENT operating_system_detection():  $agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36  
+AGENT PHP_OS : WINNT
+operating_system_detection(): WINNT    
+exec return1  0   
+exec return1 check  0   
+unlink1  /xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg   
+unlink2  /xampp/htdocs/cadviewer/converters/files/f732449193_ac1024.dwg   
+Q1 contentresponse  stream   
+Q2:svg_creation   
+Q4: $general_response{"completedAction":"svg_creation","errorCode":"E0","converter":"AutoXchange AX2020","version":"V1.00","userLabel":"fromCADViewerJS","contentLocation":"/xampp/htdocs/cadviewer/content/drawings/dwg/measure_template.dwg","contentResponse":"stream","contentStreamData":"http://localhost/cadviewer//php//getFile_09.php?remainOnServer=0&fileTag=f732449193&Type=svg"}   
+Q5: 0  1  $json_response"{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"\/xampp\/htdocs\/cadviewer\/content\/drawings\/dwg\/measure_template.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f732449193&Type=svg\"}"   
+$json_response = "{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"\/xampp\/htdocs\/cadviewer\/content\/drawings\/dwg\/measure_template.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f732449193&Type=svg\"}"  
+$post_request_flag=1 $json_response only  
 LAST BEFORE CALLBACK   
  
  

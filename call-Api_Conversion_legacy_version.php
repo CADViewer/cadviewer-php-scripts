@@ -182,7 +182,7 @@
 	
 
 	
-	} // end jsonp_flag
+	}
 
 
 	$demo_mode = FALSE;
@@ -215,9 +215,7 @@
 	$json_request = json_decode($json_data, true);
 
 
-	
-	if ($jsonp_flag)  // 7.1.17   - we control post from the config file
-		if (empty($json_request)){
+	if (empty($json_request)){
 
 		$wrong_post_format = 1;
 		$error_response = "{\"completedAction\":\"none\",\"errorCode\":\" JSON string expression incorrectly formatted \"}";
@@ -262,12 +260,11 @@
 
 
 
-	// 7.1.17   - we control post from the config file
+	// 7.1.17
 	if (!$jsonp_flag){
 
 		// set the general post reponse flag already implemented
 		$post_request_flag = true;
-		$wrong_post_format = 0;
 
 		fwrite($fd_log, "\$temp_var is null:$temp_var, this must be a post call, also:\$jsonp_flag=$jsonp_flag, isset:". isset($_POST['request'])  );
 		if(isset($_POST['request'])){
@@ -364,6 +361,167 @@
 	$max_conv = sizeof($converter_list);
 	$engine_path = "";
 	$userlabel = $json_request['userLabel'];
+
+// THESE ARE HANDLING RELATED TO THE COMMUNITY EDITION LIBREDWG CONVERTER
+// DOWN
+	
+	//echo $converter . "  " . $version . "  " . $max_conv . "  ";
+	
+	if ($json_request['action'] == 'svg_creation' && $converter == 'dwg2SVG'){
+		$contentformat = $json_request['contentFormat'];
+		if ( $contentformat!= "DWG" &&  $contentformat!= "DXF"){
+			// We cannot handle these formats!
+			echo "wrong format! - dwg2SVG cannot parse this format: $contentformat  ";
+			// proper exit handling
+			exit;
+		}
+		//echo  "dwg2SVG branch!";		
+
+		$engine_path = "";
+		for ($i = 0; $i < $max_conv; $i++) {
+			if ($converter_list[$i]['converter'] == $converter &&  $converter_list[$i]['version'] == $version){
+				$engine_path = $converter_list[$i]['location'] . '/' . $converter_list[$i]['executable'];
+			}
+		}	
+		if (isset($json_request['contentLocation']))
+			$contentlocation = $json_request['contentLocation'];
+
+		// 7.1.7
+		fwrite($fd_log, "\$contentlocation:  $contentlocation  \r\n");
+		$contentlocation = str_replace("%3A", ":", $contentlocation);	
+		$contentlocation = str_replace("%2F", "/", $contentlocation);	
+		fwrite($fd_log, "\$contentlocation:  $contentlocation  \r\n");
+
+
+		//echo $contentlocation;		
+		// NOW we have to strip off server url of string and replace with server location path
+		$server_load = 1;  // we are assuming server load
+		if ($debug){
+			fwrite($fd_log, "We are setting \$server_load:  $server_load  \r\n");
+		}
+		$pos = strpos($contentlocation, 'http');
+		$pos_2 = strpos($contentlocation, $httpHost);
+		if ($pos !== false) {
+			if ($pos == 0){
+				$server_load = 0;  // we are loading via http, we therefore need to input file to temp folder
+			}
+		}
+		if ($pos_2 !== false) {
+			if ($pos_2 == 0){
+				$server_load = 1;  // we are on the same server, so we simply swap $httpHost for $home_dir
+				$contentlocation = str_replace($httpHost, $home_dir, $contentlocation);	
+			}
+		}
+		if ($debug){
+			fwrite($fd_log, "after content location check \$server_load:  $server_load  , content-type: $contenttype \r\n contentlocation: $contentlocation \r\n");
+		}
+		
+		$temp_file_name = rand();
+		$fullPath	 =  $fileLocation  . 'f' . $temp_file_name . '.' . strtolower("SVG") ;
+		
+		$command_line =	$engine_path . " \"" . $contentlocation ."\">" .$fullPath;
+	
+		//echo "\n\r " . $command_line;
+		
+		// Now we Execute the conversion on LibreDWG
+
+ 		if ($debug){
+			fwrite($fd_log, "before call to exec:  " .$command_line ."    \r\n");
+			fwrite($fd_log, "before call to exec, engine_path:  " .$engine_path."    \r\n");
+			fwrite($fd_log, "current script owner: " . get_current_user()."    \r\n");
+			fwrite($fd_log, "operating_system_detection(): " . operating_system_detection($debug, $fd_log)."    \r\n");
+		}
+
+		exec( $command_line, $out, $return1);
+			
+			
+ 		if ($debug){
+			fwrite($fd_log, "exec return1  $return1   \r\n");
+		}
+
+		if ($return1 < -128 || $return1>256)
+			$return1 = 0;	
+
+ 		if ($debug){
+			fwrite($fd_log, "exec return1 check  $return1   \r\n");
+		}
+
+		
+		// Now we return the result file for CADViewer to pick it up		
+		$contentresponse = $json_request['contentResponse'];
+
+		// echo " contentresponse $contentresponse contentresponse" ;
+				
+		if ( $contentresponse == 'stream'){
+			$embed_cont = "";
+			$cont_loc = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=f" . $temp_file_name . "&Type=" . strtolower("SVG");
+		}
+		if ( $contentresponse == 'stream')
+			$conversion_response = array( "completedAction" => $json_request['action'],
+											  "errorCode" => "E".$return1,
+											  "converter" => $converter,
+											  "version" => $version,
+											  "userLabel" => $userlabel,
+											  "contentLocation" => $contentlocation,
+											  "contentResponse" => $contentresponse,
+											  "contentStreamData" => $cont_loc);
+		
+ 		if ($debug){
+			fwrite($fd_log, "conversion_resp  $conversion_resp   \r\n");
+		}
+
+		$conversion_resp = _json_encode($conversion_response);
+		$general_response = $conversion_resp;
+
+		// echo("conversion_response  $conversion_response   \r\n");
+		// echo("conversion_resp  $conversion_resp   \r\n");
+		// echo("general_response  $general_response   \r\n");
+
+		// Format data into a JSON response
+		$json_response = json_encode($general_response);
+
+
+		// SEND BACK RESPONSE!!!!!!
+		// Deliver formatted data, if no errors and if authentication is correct
+		if (($wrong_post_format == 0)  && ($authentication_success == TRUE)){
+
+			//echo "XXX here";
+
+
+			// echo $json_response;    - removed 2016-01-28
+			// 2016-01-28  here we need to wrap the json encoded resonse into the callback method
+
+
+			
+			if ($debug){
+				fwrite($fd_log, "\$json_response = $json_response  \r\n");
+				if ($post_request_flag){
+					fwrite($fd_log, "\$post_request_flag, \$json_response only  \r\n");
+				}
+				else{
+					fwrite($fd_log, "\$post_request_flag false \$callback. = " . $callback.'(' . $json_response . ')' ."\r\n");
+				}	
+				fwrite($fd_log, "LAST BEFORE CALLBACK   \r\n \r\n \r\n");
+				fclose($fd_log);	
+			}
+			// if jsonp then prepend callback, if standard post do not
+			if ($post_request_flag){
+				// Set HTTP Response Content Type
+					header('Content-Type: application/json; charset=utf-8');
+				echo $json_response;
+			}
+			else
+				echo $callback.'(' . $json_response . ')';
+		}
+		// HERE WE LEAVE THE COMMUNITY VERSION .......
+		exit;
+	}
+		
+	
+// UP
+// THESE ARE HANDLING RELATED TO THE COMMUNITY EDITION LIBREDWG CONVERTER
+
+
 
 //// THESE ARE HANDLING RELATED TO AUTOXCHANGE 2023 
 	if ($json_request['action'] == 'conversion' ||  $json_request['action'] == 'data_extraction' || $json_request['action'] == 'svg_js_creation_cvheadless' || $json_request['action'] == 'svg_js_creation' || $json_request['action'] == 'svg_creation' || $json_request['action'] == 'pdf_creation' || $json_request['action'] == 'svg_creation_sharepoint_REST' ) {
@@ -629,6 +787,10 @@
 						}
 						else{
 							//echo "before context...";
+
+
+
+
 							try {
 								$context = stream_context_create(array (
 									'http' => array (
@@ -646,10 +808,20 @@
 						
 							}
 
+
+
+
+
+
 							if ($debug){
 								fwrite($fd_log, "no username/password file_get_contents: $e  \r\n");
 							}
+					
+
+
+
 						}
+
 					}
 
 					if ($contenttype == 'embedded'){
@@ -736,6 +908,7 @@
 			fwrite($fd_log, "\$fullPath: $fullPath  \r\n");
 		}
 			
+
 		// we have two branches, standard file load branch
 		if ($json_request['action'] == 'svg_creation_sharepoint_REST'){
 			//echo $contenttype ."  " . $contentlocation . "  ". $fullPath . " " . $Settings['Url'] . "  ";
@@ -928,6 +1101,7 @@
 
 
 
+
 		 $saved = getenv("LD_LIBRARY_PATH");
 		 if ($saved) { $ld_lib_path =  $ld_lib_path . ":$saved"; }           // append old paths if any
 
@@ -990,65 +1164,78 @@ set_time_limit(240);
 
 
 
+// if the content file is of type DWF and the process is svg_js_creation_cvheadless, then we do not call conversion
+// we pass the input dwf file directly over to CV headless and painter
 
-	if ($debug){
-		fwrite($fd_log, "before call to exec:  " .$command_line ."    \r\n");
-		fwrite($fd_log, "before call to exec, engine_path:  " .$engine_path."    \r\n");
-		fwrite($fd_log, "current script owner: " . get_current_user()."    \r\n");
-		fwrite($fd_log, "operating_system_detection(): " . operating_system_detection($debug, $fd_log)."    \r\n");
-	}
+		if ( $json_request['action'] == 'svg_js_creation_cvheadless' && ( $contentformat == 'DWF' || $contentformat == 'dwf'  )){
 
-		exec( $command_line, $out, $return1);
-		
-	if ($debug){
-		fwrite($fd_log, "exec return1  $return1   \r\n");
-	}
+			$cp_command_line = 'mv ./files/f' . $temp_file_name . '.' . $contentformat . ' ./files/f' . $temp_file_name . '.dwf' ;
+			exec($cp_command_line, $out, $return1);
 
-	if ($return1 < -128 || $return1>256)
-		$return1 = 0;	
+			// echo " \n rename the file to the converter output file \n";
 
-	if ($debug){
-		fwrite($fd_log, "exec return1 check  $return1   \r\n");
-	}
+		}
+		else{  // call the converter
+
+ 		if ($debug){
+			fwrite($fd_log, "before call to exec:  " .$command_line ."    \r\n");
+			fwrite($fd_log, "before call to exec, engine_path:  " .$engine_path."    \r\n");
+			fwrite($fd_log, "current script owner: " . get_current_user()."    \r\n");
+			fwrite($fd_log, "operating_system_detection(): " . operating_system_detection($debug, $fd_log)."    \r\n");
+		}
+
+			exec( $command_line, $out, $return1);
+			
+ 		if ($debug){
+			fwrite($fd_log, "exec return1  $return1   \r\n");
+		}
+
+		if ($return1 < -128 || $return1>256)
+			$return1 = 0;	
+
+ 		if ($debug){
+			fwrite($fd_log, "exec return1 check  $return1   \r\n");
+		}
 
 
-		// clean out originating file + temp w2d file (if present)
-		//$file_1 = $home_dir. '/' . $fullPath;
-		$file_1 = $fullPath;
+			// clean out originating file + temp w2d file (if present)
+			//$file_1 = $home_dir. '/' . $fullPath;
+			$file_1 = $fullPath;
 
 
 //if ($debug) echo "  unlink1 " . $file_1;
-	if ($debug){
-		fwrite($fd_log, "unlink1  $file_1   \r\n");
-	}
-
-	// 3.3.02c - we only delete the source file, if not same server load
-	if (!$debug && $server_load == 0)
-		if (file_exists($file_1)){
-			unlink($file_1);
+ 		if ($debug){
+			fwrite($fd_log, "unlink1  $file_1   \r\n");
 		}
 
-		$file_1 = $fileLocation  . 'f' . $temp_file_name . '_ac1024.dwg';
-	if (!$debug)
-		if (file_exists($file_1)){
-			unlink($file_1);
-		}
+		// 3.3.02c - we only delete the source file, if not same server load
+		if (!$debug && $server_load == 0)
+			if (file_exists($file_1)){
+				unlink($file_1);
+			}
+
+			$file_1 = $fileLocation  . 'f' . $temp_file_name . '_ac1024.dwg';
+		if (!$debug)
+			if (file_exists($file_1)){
+				unlink($file_1);
+			}
 
 //if ($debug) echo " unlink2 " . $file_1;
-	if ($debug){
-		fwrite($fd_log, "unlink2  $file_1   \r\n");
-	}
+ 		if ($debug){
+			fwrite($fd_log, "unlink2  $file_1   \r\n");
+		}
 
 
-//echo  " \$output_file_extension = $output_file_extension \n";
+	//echo  " \$output_file_extension = $output_file_extension \n";
 
-		if ($output_file_extension == 'dwf' || $output_file_extension == 'DWF'){
-			$file_2	 =  $home_dir . $fileLocation  . 'f' . $temp_file_name . '.w2d';
+			if ($output_file_extension == 'dwf' || $output_file_extension == 'DWF'){
+				$file_2	 =  $home_dir . $fileLocation  . 'f' . $temp_file_name . '.w2d';
 
-			if (file_exists($file_2)){
-				unlink($file_2);
+				if (file_exists($file_2)){
+					unlink($file_2);
+				}
+				// here we need to make a loop an remove all w2d files if conversion is done with -vn=*ALL*
 			}
-			// here we need to make a loop an remove all w2d files if conversion is done with -vn=*ALL*
 		}
 
 //		echo "return1= $return1 ";
@@ -1059,17 +1246,76 @@ set_time_limit(240);
 
 		$embed_cont = "";
 
+// if svg_js_creation_cvheadless, take the dwf file, run it through painter,to produce three new .js files
+// delete the dwf file after use.
+
+		if ($json_request['action'] == 'svg_js_creation_cvheadless'){
+
+// first create a new text based dwf file which has been through headlessCV -
+// set up the call to headless CV
+			$cv_codebase= "/home/cadviewer/tms-restful-api/cv_headless/";
+			$cv_classpath = "./cv_headless";
+			$headless_command_line = "sh ./cv_headless/callCVheadless.sh " .  $cv_codebase . " " .  $home_dir . $outputFile . " " . $home_dir . $fileLocation  . 'fj' . $temp_file_name . '.' . $output_file_extension;
+
+// echo " ZZZ $headless_command_line ZZZZZ \n";
+// echo		shell_exec($headless_command_line);
+			shell_exec($headless_command_line);
+
+// echo "  $headless_command_line \n";
+// set up the call to painter
+
+			$building_data_identifier = 'BUILDING_DATA_IDENTIFIER';
+			$floor = 'FLOOR';
+
+//   -ext parameter added
+			$js_command_line = "./converters/painter_L64_01_32 " . $home_dir . $fileLocation  . 'fj' . $temp_file_name . '.' . $output_file_extension ." ". $param_string_painter ." -ext -bldg=" . $building_data_identifier ." -floor=" . $floor;
+
+// echo "  $js_command_line \n";
+
+			exec($js_command_line, $out, $return1);
+
+// echo "  $return1 \n";
+// echo "  $out \n";
+			// rename $temp_file_name .js file to -full.js
+			$cp_command_line = 'mv ./files/fj' . $temp_file_name . '.js ./files/fj' . $temp_file_name . '-full.js' ;
+
+			exec($cp_command_line, $out, $return1);
+			$rm_command_line = 'rm ./files/fj' . $temp_file_name . '.js';
+
+			exec($rm_command_line, $out, $return1);
+//echo "  $cp_command_line \n";
+//echo "  $rm_command_line \n";
+			// copy over base-DB.js into  $temp_file_name.js
+			$fP1 = $fileLocation  .'/fj' . $temp_file_name . '.js';
+			$baseDB = './cv_headless/base-DB.js';
+			$file_content1 = file_get_contents($baseDB);
+
+	//echo "  $file_content1 XXXX  \n";
+
+			if ($fd1 = fopen ($fP1, "w")) {
+				fwrite($fd1, $file_content1);
+				fclose ($fd1);
+			}
+
+
+			$old_cont_file = $home_dir . $outputFile;
+
+			if (file_exists($old_cont_file)){
+				unlink($old_cont_file);
+			}
+
+			$old_cont_file = $home_dir . $fileLocation  . 'fj' . $temp_file_name . '.' . $output_file_extension;
+
+			// we do not yet unlink the CV Headless DWF file, as both CV and Painter needs improvements
+			if (file_exists($old_cont_file)){
+//				unlink($old_cont_file);
+			}
+
+		}
 
 	$return1 = 'E' . $return1;
 
 // set up how the content is responded  , json_request['action'] of type conversion and data_extraction
-
-if ($debug){
-	fwrite($fd_log, "Q1 contentresponse  $contentresponse   \r\n");
-}
-
-
-
 
 		if ( $contentresponse == 'file'){
 			$embed_cont = "";
@@ -1133,9 +1379,222 @@ if ($debug){
 
 
 
+
+
+
+// set up how the content is responded  , json_request['action'] of type svg_js_creation_cvheadless
+// based on CV headless
+
+		if ( $json_request['action'] == 'svg_js_creation_cvheadless' ){
+
+
+			if ( $contentresponse == 'file'){
+				$embed_cont = "";
+				$cont_loc1= $home_dir . $fileLocation  . 'fj' . $temp_file_name . '-full.js';
+				$cont_loc2= $home_dir . $fileLocation  . 'fj' . $temp_file_name . '-nodes.js';
+				$cont_loc3= $home_dir . $fileLocation  . 'fj' . $temp_file_name . '.js';
+				$cont_loc4= $home_dir . $fileLocation  . 'fj' . $temp_file_name . '-thumb.js';
+			}
+
+
+			if ( $contentresponse == 'embedded'){
+				$cont_file = $home_dir . $fileLocation  . 'fj' . $temp_file_name . '-full.js';
+				$file_content_conv = file_get_contents($cont_file);
+				$embed_cont1 = base64_encode($file_content_conv);
+				unlink($cont_file);
+
+				$cont_file = $home_dir . $fileLocation  . 'fj' . $temp_file_name . '-nodes.js';
+				$file_content_conv = file_get_contents($cont_file);
+				$embed_cont2 = base64_encode($file_content_conv);
+				unlink($cont_file);
+
+				$cont_file = $home_dir . $fileLocation  . 'fj' . $temp_file_name . '.js';
+				$file_content_conv = file_get_contents($cont_file);
+				$embed_cont3 = base64_encode($file_content_conv);
+				unlink($cont_file);
+
+				$cont_file = $home_dir . $fileLocation  . 'fj' . $temp_file_name . '-thumb.js';
+				$file_content_conv = file_get_contents($cont_file);
+				$embed_cont4 = base64_encode($file_content_conv);
+				unlink($cont_file);
+
+
+
+			}
+
+			if ( $contentresponse == 'stream'){
+				$embed_cont = "";
+				$cont_loc1 = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=" . 'fj' . $temp_file_name . '-full' . "&Type=" . "js";
+
+				$cont_loc2 = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=" . 'fj' . $temp_file_name . '-nodes' . "&Type=" . "js";
+
+				$cont_loc3 = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=" . 'fj' . $temp_file_name . "&Type=" . "js";
+
+				$cont_loc4 = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=" . 'fj' . $temp_file_name . '-thumb' . "&Type=" . "js";
+
+
+			}
+
+
+
+			// array with response - for type "file" and "stream" - below we rewrite it if of type "embedded"
+			$conversion_response = array( "completedAction" => $json_request['action'],
+										  "errorCode" => $return1,
+										  "converter" => $converter,
+										  "version" => $version,
+										  "userLabel" => $userlabel,
+										  "contentResponse" => $contentresponse,
+										  "contentLocationGraphics" => $cont_loc1,
+										  "contentLocationNodes" => $cont_loc2,
+										  "contentLocationData" => $cont_loc3,
+										  "contentLocationThumb" => $cont_loc4);
+
+
+			if ( $contentresponse == 'stream'){
+
+				$conversion_response = array( "completedAction" => $json_request['action'],
+											  "errorCode" => $return1,
+											  "converter" => $converter,
+											  "version" => $version,
+											  "userLabel" => $userlabel,
+											  "contentResponse" => $contentresponse,
+											  "contentStreamGraphics" => $cont_loc1,
+											  "contentStreamNodes" => $cont_loc2,
+											  "contentStreamData" => $cont_loc3,
+											  "contentStreamThumb" => $cont_loc4);
+			}
+
+
+
+
+			if ( $contentresponse == 'embedded'){
+
+				$conversion_response = array( "completedAction" => $json_request['action'],
+											  "errorCode" => $return1,
+											  "converter" => $converter,
+											  "version" => $version,
+											  "userLabel" => $userlabel,
+											  "contentResponse" => $contentresponse,
+											  "embeddedContentGraphics" => $embed_cont1,
+											  "embeddedContentNodes" => $embed_cont2,
+											  "embeddedContentData" => $embed_cont3,
+											  "contentStreamThumb" => $embed_loc4);
+
+			}
+
+
+		}
+
+
+
+
+
+// set up how the content is responded  , json_request['action'] of type svg_js_creation
+// based on AX2017 -f=js conversion
+
+		if ( $json_request['action'] == 'svg_js_creation' ){
+
+
+			if ( $contentresponse == 'file'){
+				$embed_cont = "";
+				$cont_loc1= $fileLocationUrl  . 'f' . $temp_file_name . '-full.js';
+				$cont_loc2= $fileLocationUrl  . 'f' . $temp_file_name . '-nodes.js';
+				$cont_loc3= $fileLocationUrl  . 'f' . $temp_file_name . '.js';
+				$cont_loc4= $fileLocationUrl  . 'f' . $temp_file_name . '-thumb.js';
+			}
+
+
+			if ( $contentresponse == 'embedded'){
+				$cont_file = $fileLocation  . 'f' . $temp_file_name . '-full.js';
+				$file_content_conv = file_get_contents($cont_file);
+				$embed_cont1 = base64_encode($file_content_conv);
+				unlink($cont_file);
+
+				$cont_file = $fileLocation  . 'f' . $temp_file_name . '-nodes.js';
+				$file_content_conv = file_get_contents($cont_file);
+				$embed_cont2 = base64_encode($file_content_conv);
+				unlink($cont_file);
+
+				$cont_file = $fileLocation  . 'f' . $temp_file_name . '.js';
+				$file_content_conv = file_get_contents($cont_file);
+				$embed_cont3 = base64_encode($file_content_conv);
+				unlink($cont_file);
+
+				$cont_file = $fileLocation  . 'f' . $temp_file_name . '-thumb.js';
+				$file_content_conv = file_get_contents($cont_file);
+				$embed_cont4 = base64_encode($file_content_conv);
+				unlink($cont_file);
+
+
+
+			}
+
+			if ( $contentresponse == 'stream'){
+				$embed_cont = "";
+				$cont_loc1 = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=" . 'f' . $temp_file_name . '-full' . "&Type=" . "js";
+
+				$cont_loc2 = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=" . 'f' . $temp_file_name . '-nodes' . "&Type=" . "js";
+
+				$cont_loc3 = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=" . 'f' . $temp_file_name . "&Type=" . "js";
+
+				$cont_loc4 = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=" . 'f' . $temp_file_name . '-thumb' . "&Type=" . "js";
+
+
+			}
+
+
+
+			// array with response - for type "file" and "stream" - below we rewrite it if of type "embedded"
+			$conversion_response = array( "completedAction" => $json_request['action'],
+										  "errorCode" => $return1,
+										  "converter" => $converter,
+										  "version" => $version,
+										  "userLabel" => $userlabel,
+										  "contentResponse" => $contentresponse,
+										  "contentLocationGraphics" => $cont_loc1,
+										  "contentLocationNodes" => $cont_loc2,
+										  "contentLocationData" => $cont_loc3,
+										  "contentLocationThumb" => $cont_loc4);
+
+
+			if ( $contentresponse == 'stream'){
+
+				$conversion_response = array( "completedAction" => $json_request['action'],
+											  "errorCode" => $return1,
+											  "converter" => $converter,
+											  "version" => $version,
+											  "userLabel" => $userlabel,
+											  "contentResponse" => $contentresponse,
+											  "contentStreamGraphics" => $cont_loc1,
+											  "contentStreamNodes" => $cont_loc2,
+											  "contentStreamData" => $cont_loc3,
+											  "contentStreamThumb" => $cont_loc4);
+			}
+
+
+
+
+			if ( $contentresponse == 'embedded'){
+
+				$conversion_response = array( "completedAction" => $json_request['action'],
+											  "errorCode" => $return1,
+											  "converter" => $converter,
+											  "version" => $version,
+											  "userLabel" => $userlabel,
+											  "contentResponse" => $contentresponse,
+											  "embeddedContentGraphics" => $embed_cont1,
+											  "embeddedContentNodes" => $embed_cont2,
+											  "embeddedContentData" => $embed_cont3,
+											  "contentStreamThumb" => $embed_loc4);
+
+			}
+
+
+		}
+
 //if ($debug) echo $json_request['action'];
  		if ($debug){
-			fwrite($fd_log,"Q2:" . $json_request['action'] . "   \r\n");
+			fwrite($fd_log, $json_request['action'] . "   \r\n");
 		}
 
 		if ( $json_request['action'] == 'svg_creation' || $json_request['action'] == 'pdf_creation' ){
@@ -1220,29 +1679,17 @@ if ($debug){
 		}
 
 
-		//if ($debug){
-		//	fwrite($fd_log,"Q3: \$conversion_response" . $conversion_response . "   \r\n");
-		//}
-
-
-
 		$conversion_resp = _json_encode($conversion_response);
 		$general_response = $conversion_resp;
 
-
-		if ($debug){
-			fwrite($fd_log,"Q4: \$general_response" . $general_response . "   \r\n");
-		}
-
 	}
+
+
+
 
 	// Format data into a JSON response
 	$json_response = json_encode($general_response);
 
-
-	if ($debug){
-		fwrite($fd_log,"Q5: $wrong_post_format  $authentication_success  \$json_response" . $json_response . "   \r\n");
-	}
 
 	// SEND BACK RESPONSE!!!!!!
 
@@ -1260,7 +1707,7 @@ if ($debug){
 		if ($debug){
 			fwrite($fd_log, "\$json_response = $json_response  \r\n");
 			if ($post_request_flag){
-				fwrite($fd_log, "\$post_request_flag=$post_request_flag \$json_response only  \r\n");
+				fwrite($fd_log, "\$post_request_flag, \$json_response only  \r\n");
 			}
 			else{
 				fwrite($fd_log, "\$post_request_flag  \$callback. = " . $callback.'(' . $json_response . ')' ."\r\n");
@@ -1281,10 +1728,13 @@ if ($debug){
     		echo $callback.'(' . $json_response . ')';
 
 
+
+
 		exit;
 	}
 
 	
+
 	} catch(Exception $e) {
 		echo "The exception $e was created on line: " . $e->getLine();
 	}	
