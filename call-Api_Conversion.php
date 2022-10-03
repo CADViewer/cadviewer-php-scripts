@@ -91,8 +91,8 @@
 	// 2016-01-28
 	// create debug file
 	if ($debug) {
-		if ($fd_log = fopen ("call-Api_Conversion_log.txt", "a+")) {
-			fwrite($fd_log, "\r\n NEW-FILE-CONVERSION-BEGIN   v7.1.7  \r\n \r\n");
+		if ($fd_log = fopen ("call-Api_Conversion_log.txt", "w")) {   // a+ ->w
+			fwrite($fd_log, "\r\n NEW-FILE-CONVERSION-BEGIN v7.1.15  \r\n \r\n");
 			fwrite($fd_log, "Opening call-Api_Conversion_log.txt for new conversion: \r\n");
 		}		
 	}
@@ -558,6 +558,13 @@
 								$contentlocation = str_replace(' ', '%20', $contentlocation);
 							}
 						}
+						else{
+							// we are on this server, so we dont want %20
+							// we try something new here, file on server opend
+							$contentlocation = str_replace('%20', ' ', $contentlocation);
+						}
+
+
 
 						if ($debug){
 							fwrite($fd_log, "X005 In action: contentype file: $contentlocation  \r\n");
@@ -571,8 +578,9 @@
 								fwrite($fd_log, "before download file  \r\n");
 							}
 							try{   // 6.5.20
+
 								if ($debug){
-									fwrite($fd_log, " HELLO! $fullPath  \r\n");
+									fwrite($fd_log, " Before COPY: from $contentlocation to $fullPath  \r\n");
 								}
 								$newfname = $fullPath;
 								$file = fopen ($contentlocation, 'rb');

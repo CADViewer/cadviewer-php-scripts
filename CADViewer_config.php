@@ -15,9 +15,9 @@
 
 //  Home directory, the local path corresponding to the http host - note use direct setting if path different from cadviewer. 
 //  Windows
-	$home_dir = "/xampp/htdocs/cadviewer";
+	$home_dir = "/xampp/htdocs/cadviewer/";
 //  Linux
-//	$home_dir = "/var/www/html/cadviewer";
+//	$home_dir = "/var/www/html/cadviewer/";
 
 
 //MOST PATHS ARE SET UP BASED ON HttpHost and home_dir    (Users can change this setting if an implementation needs to split up locations)
