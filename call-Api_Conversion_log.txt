@@ -20,22 +20,22 @@ after content location check $server_load:  1  , content-type: (file
  location X004  contentlocation:/xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg 
 X005 In action: contentype file: /xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg  
 before download file  
- Before COPY: from /xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg to /xampp/htdocs/cadviewer//converters/files/f2119501762.dwg  
-$fullPath: /xampp/htdocs/cadviewer//converters/files/f2119501762.dwg  
-$fullPath: /xampp/htdocs/cadviewer//converters/files/f2119501762.dwg  
+ Before COPY: from /xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg to /xampp/htdocs/cadviewer//converters/files/f964941595.dwg  
+$fullPath: /xampp/htdocs/cadviewer//converters/files/f964941595.dwg  
+$fullPath: /xampp/htdocs/cadviewer//converters/files/f964941595.dwg  
 AA: before setting $fullPath:  $server_load 1   $contenttype file 
 $fullPath: /xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg  
 $max_conv: 5  
-$engine_path: /xampp/htdocs/cadviewer//converters/ax2023/windows//AX2023_W64_23_10_99.exe  
+$engine_path: /xampp/htdocs/cadviewer//converters/ax2023/windows//AX2023_W64_23_10_102.exe  
 new $add_xpath    
 In loop to add xpath  
 after first loop $command_line_parameter_xpath: 0  
-$command_line: "/xampp/htdocs/cadviewer//converters/ax2023/windows//AX2023_W64_23_10_99.exe" "-i=/xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg" "-o=/xampp/htdocs/cadviewer//converters/files/f2119501762.svg"  "-f=svg" -last "-fpath=/converters/ax2022/windows/fonts/" "-lpath=/xampp/htdocs/cadviewer//converters/ax2023/windows/"  XXXXXXX  
+$command_line: "/xampp/htdocs/cadviewer//converters/ax2023/windows//AX2023_W64_23_10_102.exe" "-i=/xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg" "-o=/xampp/htdocs/cadviewer//converters/files/f964941595.svg"  "-f=svg" -last "-fpath=/converters/ax2022/windows/fonts/" "-lpath=/xampp/htdocs/cadviewer//converters/ax2023/windows/"  XXXXXXX  
 library path before new env: /xampp/htdocs/cadviewer//converters/ax2023/windows/  
 this is the value we got setting the environment 1  
 getenv after putenv: /xampp/htdocs/cadviewer//converters/ax2023/windows/   
-before call to exec:  "/xampp/htdocs/cadviewer//converters/ax2023/windows//AX2023_W64_23_10_99.exe" "-i=/xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg" "-o=/xampp/htdocs/cadviewer//converters/files/f2119501762.svg"  "-f=svg" -last "-fpath=/converters/ax2022/windows/fonts/" "-lpath=/xampp/htdocs/cadviewer//converters/ax2023/windows/"     
-before call to exec, engine_path:  /xampp/htdocs/cadviewer//converters/ax2023/windows//AX2023_W64_23_10_99.exe    
+before call to exec:  "/xampp/htdocs/cadviewer//converters/ax2023/windows//AX2023_W64_23_10_102.exe" "-i=/xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg" "-o=/xampp/htdocs/cadviewer//converters/files/f964941595.svg"  "-f=svg" -last "-fpath=/converters/ax2022/windows/fonts/" "-lpath=/xampp/htdocs/cadviewer//converters/ax2023/windows/"     
+before call to exec, engine_path:  /xampp/htdocs/cadviewer//converters/ax2023/windows//AX2023_W64_23_10_102.exe    
 current script owner: caspe    
 AGENT operating_system_detection():  $agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36  
 AGENT PHP_OS : WINNT
@@ -43,12 +43,12 @@ operating_system_detection(): WINNT
 exec return1  0   
 exec return1 check  0   
 unlink1  /xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg   
-unlink2  /xampp/htdocs/cadviewer//converters/files/f2119501762_ac1024.dwg   
+unlink2  /xampp/htdocs/cadviewer//converters/files/f964941595_ac1024.dwg   
 Q1 contentresponse  stream   
 Q2:svg_creation   
-Q4: $general_response{"completedAction":"svg_creation","errorCode":"E0","converter":"AutoXchange AX2020","version":"V1.00","userLabel":"fromCADViewerJS","contentLocation":"/xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg","contentResponse":"stream","contentStreamData":"http://localhost/cadviewer//php//getFile_09.php?remainOnServer=0&fileTag=f2119501762&Type=svg"}   
-Q5: 0  1  $json_response"{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"\/xampp\/htdocs\/cadviewer\/\/content\/drawings\/dwg\/Asbestos_drawing_01.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f2119501762&Type=svg\"}"   
-$json_response = "{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"\/xampp\/htdocs\/cadviewer\/\/content\/drawings\/dwg\/Asbestos_drawing_01.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f2119501762&Type=svg\"}"  
+Q4: $general_response{"completedAction":"svg_creation","errorCode":"E0","converter":"AutoXchange AX2020","version":"V1.00","userLabel":"fromCADViewerJS","contentLocation":"/xampp/htdocs/cadviewer//content/drawings/dwg/Asbestos_drawing_01.dwg","contentResponse":"stream","contentStreamData":"http://localhost/cadviewer//php//getFile_09.php?remainOnServer=0&fileTag=f964941595&Type=svg"}   
+Q5: 0  1  $json_response"{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"\/xampp\/htdocs\/cadviewer\/\/content\/drawings\/dwg\/Asbestos_drawing_01.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f964941595&Type=svg\"}"   
+$json_response = "{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"\/xampp\/htdocs\/cadviewer\/\/content\/drawings\/dwg\/Asbestos_drawing_01.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f964941595&Type=svg\"}"  
 $post_request_flag=1 $json_response only  
 LAST BEFORE CALLBACK   
  

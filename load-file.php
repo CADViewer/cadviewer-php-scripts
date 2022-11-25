@@ -34,6 +34,7 @@ else{
 $fullPath = "";
 $loadtype = "";
 $listtype = "";
+$redline = "x";
 
 if (!empty($_GET)) {
 	if (isset($_GET['file'])) {
@@ -74,6 +75,8 @@ else{
 }
 
 
+
+
 //echo "XX loadtype:" . $loadtype ."    listtype:" . $listtype. "  ". $fullPath;
 
 // load languages app dir
@@ -92,7 +95,23 @@ if ( $loadtype == "serverfilelist"){
 }
 
 
-//echo "  fullPath:" . $fullPath. "XYZXYZ";
+// 7.6.26
+$pos1 = strpos($fullPath, "http:");
+$pos2 = strpos($fullPath, "https:");
+$basepathpos = strpos($fullPath, $home_dir);
+//echo "pos1".is_numeric($pos1)."pos2".is_numeric($pos2);
+// home dir . for server location   only if not 
+if ( $loadtype == "redline" && !(is_numeric($pos1) || is_numeric($pos2) )){
+		
+	if (is_numeric($basepathpos) && $basepathpos == 0) {
+		// do nothing, only if the serverpath is the beginning part of the complete filename
+	}
+	else 
+		$fullPath = $home_dir . $fullPath;
+
+}
+
+//echo "  fullPath:" . $fullPath. "XYZXYZ " . $loadtype ."XXXX";
 
 $contents = '';
 
