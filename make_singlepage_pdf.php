@@ -2,6 +2,36 @@
 	
 	require 'CADViewer_config.php';
 
+	
+	
+	
+$http_origin = '';
+
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+$http_origin = $_SERVER['HTTP_ORIGIN'];
+}
+elseif (isset($_SERVER['HTTP_REFERER'])) {
+$http_origin = $_SERVER['HTTP_REFERER'];
+}
+
+if ($checkorigin){
+	
+	if (in_array($http_origin, $allowed_domains))
+	{
+		header("Access-Control-Allow-Origin: $http_origin");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+		header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+	}	
+}
+else{
+	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+	header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+}
+	
+	
+	
+	
 	$serverPath = $_POST['serverPath'];
 	$numberOfFiles = 1;
 	$originalFileName = $_POST['org_fileName_0'];
