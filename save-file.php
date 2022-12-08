@@ -4,6 +4,35 @@
 require 'CADViewer_config.php';
 
 
+
+$http_origin = '';
+
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+$http_origin = $_SERVER['HTTP_ORIGIN'];
+}
+elseif (isset($_SERVER['HTTP_REFERER'])) {
+$http_origin = $_SERVER['HTTP_REFERER'];
+}
+
+if ($checkorigin){
+	
+	if (in_array($http_origin, $allowed_domains))
+	{
+		header("Access-Control-Allow-Origin: $http_origin");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+		header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+	}	
+}
+else{
+	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+	header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+}
+
+
+
+
+
 $fullPath = $_POST['file'];
 $file_content = $_POST['file_content'];
 
@@ -76,7 +105,7 @@ if ( $listtype == "redline" && !(is_numeric($pos1) || is_numeric($pos2) )){
 $fullPath = urldecode($fullPath);
 
 
-echo 'XX'. $fullPath . 'XX';
+//echo 'XX'. $fullPath . 'XX';
 
 
 if (strpos ( $fullPath , 'http' )>-1){
