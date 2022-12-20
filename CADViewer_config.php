@@ -31,9 +31,9 @@
 	
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$ax2023_executable = "ax2023_L64_23_10_103";
+//	$ax2023_executable = "ax2023_L64_23_10_104";
 // 	Windows
-	$ax2023_executable = "AX2023_W64_23_10_103.exe";
+	$ax2023_executable = "AX2023_W64_23_10_104.exe";
 
 //  USE svgz compression
 	$svgz_compress = false;   // default is false
@@ -96,6 +96,10 @@
 
 //  Path to the location of the license key axlic.key file, typically this is the same location as AX2020
 	$licenseLocation = $home_dir . "/converters/ax2023/".$platform."/";
+
+
+//  Path to the location of the license key axlic.key file, typically this is the same location as AX2020
+	$fontLocation = $home_dir . "/converters/ax2023/". $platform. "/fonts/";
 
 
 //  Path to the XRef locations for external referenced drawings

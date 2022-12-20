@@ -82,6 +82,7 @@
 	// Settings of variables, not defined in configuration files
 	$add_xpath = false;  	// NOTE: We are overwriting the configuration file settings with the contentlocation setting. 		
 	$add_lpath = true;  	// we are adding lpath from configuration file
+	$add_fpath = true;
 	$remainOnServer = 0;  	// general flag to tell pickup stream to to leave on server
 
 	//  try-catch  1.5.09
@@ -450,6 +451,7 @@
 							else{  // general case for creating the parameter string!!
 								if ($parameters[$i]['paramName'] == 'xpath') $add_xpath = false;  // we are not using the config xpath, instead we use the one in the parameters
 								if ($parameters[$i]['paramName'] == 'lpath') $add_lpath = false;  // we are not using the config xpath, instead we use the one in the parameters
+								if ($parameters[$i]['paramName'] == 'fpath') $add_fpath = false;  // we are not using the config xpath, instead we use the one in the parameters
 
 								$v1 = $parameters[$i]['paramName'];
 								$v2 = $parameters[$i]['paramValue'];
@@ -857,6 +859,14 @@
 
 		for ($i = 0; $i < $max_conv; $i++) {
 			if ($converter_list[$i]['converter'] == $converter &&  $converter_list[$i]['version'] == $version){
+				if ($add_fpath){ // 2022-12-20  - running as .bat
+					if (strpos($op_string, 'win') !== false) {
+						$command_line = $command_line . " \"-fpath=" . $fontLocation . "\" "  ;
+					}
+					else		
+						$command_line = $command_line . " -fpath=\"" . $fontLocation . "\" "  ;
+					//$command_line = $command_line . " -lpath=\"" . $licenseLocation . "\" "  ;
+				}
 				if ($add_lpath){ // 2019-06-28  - running as .bat
 					if (strpos($op_string, 'win') !== false) {
 						$command_line = $command_line . " \"-lpath=" . $licenseLocation . "\" "  ;
