@@ -15,7 +15,7 @@
 
 //  Home directory, the local path corresponding to the http host - note use direct setting if path different from cadviewer. 
 //  Windows
-	$home_dir = "/xampp/htdocs/cadviewer/";
+//	$home_dir = "/xampp/htdocs/cadviewer/";
 //  Linux
 //	$home_dir = "/var/www/html/cadviewer/";
 
@@ -31,9 +31,9 @@
 	
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$ax2023_executable = "ax2023_L64_23_10_105";
+//	$ax2023_executable = "ax2023_L64_23_12_107";
 // 	Windows
-	$ax2023_executable = "AX2023_W64_23_10_105.exe";
+	$ax2023_executable = "AX2023_W64_23_12_107.exe";
 
 //  USE svgz compression
 	$svgz_compress = false;   // default is false
