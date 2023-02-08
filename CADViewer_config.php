@@ -36,7 +36,11 @@
 	$ax2023_executable = "AX2023_W64_23_12_107.exe";
 
 //  USE svgz compression
-	$svgz_compress = false;   // default is false
+	$svgz_compress = true;   // default is false
+
+
+	$cached_conversion = true;
+
 
 
 //  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
