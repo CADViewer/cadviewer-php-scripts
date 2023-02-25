@@ -15,7 +15,7 @@
 	
 */
 
-	$scriptversion = "8.26.4";
+	$scriptversion = "8.37.1";
 
 	// Configuration file for CADViewer Community and CADViewer Enterprise version and standard settings
 	require 'CADViewer_config.php';
@@ -87,7 +87,7 @@
 	$add_xpath = false;  	// NOTE: We are overwriting the configuration file settings with the contentlocation setting. 		
 	$add_lpath = true;  	// we are adding lpath from configuration file
 	$add_fpath = true;
-	$remainOnServer = 0;  	// general flag to tell pickup stream to to leave on server
+	$remainOnServer = 1;  	// general flag to tell pickup stream to to leave on server
 
 	//  try-catch  1.5.09
 	try {
@@ -408,6 +408,7 @@
 		if (isset($json_request['leaveStreamOnServer']))
 			$remainOnServer = $json_request['leaveStreamOnServer'];
 
+//		$remainOnServer = 1;
 
 		$contentformat = $json_request['contentFormat'];
 		$userlabel = $json_request['userLabel'];
@@ -550,6 +551,19 @@
 		$fullPath	 =  $fileLocation  . 'f' . $temp_file_name . '.' . strtolower($contentformat) ;
 
 
+		// 8.37.1
+		$svginputfile = 0;
+		if (($json_request['contentFormat'] == 'SVG') || ($json_request['contentFormat'] == 'svg') || ($json_request['contentFormat'] == 'svgz') || ($json_request['contentFormat'] == 'SVGZ') ){
+			$svginputfile = 1;
+		}
+
+
+
+		if ($debug){
+			fwrite($fd_log, "  \$svginputfile: $svginputfile  \r\n");
+		}
+
+
 
 		// 6.5.20
 		$newload = false;
@@ -561,10 +575,14 @@
 			// 1.5.12
 			$server_load = 1;  // we are assuming server load
 			if ($debug){
-				fwrite($fd_log, "We are setting \$server_load:  $server_load  \r\n");
+				fwrite($fd_log, "We are setting \$server_load:  $server_load   $contentlocation \r\n");
 			}
 			$pos = strpos($contentlocation, 'http');
 			$pos_2 = strpos($contentlocation, $httpHost);
+
+
+
+
 			if ($pos !== false) {
 				if ($pos == 0){
 					$server_load = 0;  // we are loading via http, we therefore need to input file to temp folder
@@ -609,16 +627,20 @@
 
 						if ($contentusername == '' || $contentpassword == ''  ){
 
-
-
 							if ($debug){
 								fwrite($fd_log, "before download file  \r\n");
 							}
+
+
+
 							try{   // 6.5.20
 								if ($debug){
-									fwrite($fd_log, " HELLO! $fullPath  \r\n");
+									fwrite($fd_log, " HELLO! $fullPath  $contentlocation \r\n");
 								}
 								$newfname = $fullPath;
+
+								$contentlocation = urldecode($contentlocation);
+
 								$file = fopen ($contentlocation, 'rb');
 								if ($file) {
 									$newf = fopen ($newfname, 'wb');
@@ -949,12 +971,21 @@
 				fwrite($fd_log, "after first loop \$command_line_parameter_xpath: $command_line_parameter_xpath  \r\n");
 			}
 
-			if ($command_line_parameter_xpath == 0   &&  strrpos($converter , "LinkList")==-1){   // 6.5.20
-				// strip off file name of $contentlocation		
+			$axconv = strrpos($converter , "AutoXchange");
+
+			fwrite($fd_log, "after first loop \$command_line_parameter_xpath: $command_line_parameter_xpath  converter $converter   axconv $axconv \r\n");
+
+
+
+//			if (($command_line_parameter_xpath == 0)   &&  (>0)){  
+			if (($command_line_parameter_xpath == 0)  &&  ($axconv == 0)){  
+					// strip off file name of $contentlocation		
 				$pos1 = strrpos ( $contentlocation , "/");
 				$xloc = substr($contentlocation, 0, $pos1+1);
 				// use contentlocation as xpath
 				//	$command_line = $command_line  . " -xpath=\"" . $xloc . "\" " ;    // content location is used as xpath
+
+				fwrite($fd_log, "adding xpath: ");
 
 // 2019-06-28  - running as .bat
 					if (strpos($op_string, 'win') !== false) {
@@ -1108,11 +1139,13 @@ set_time_limit(240);
 	*/
 
 
-
-
 	$temp_file_name_org ="";
 	$this_conversion_cached = false;
-	if ($cached_conversion){
+
+	fwrite($fd_log, "BEFORE CACHED CONVERSION t:$this_conversion_cached c: $cached_conversion" .($svginputfile==0) ."  $svginputfile    \n\r ");
+
+	// 8.37.1
+	if ($cached_conversion && ($svginputfile==0)){
 
 		// we always leave the file on server if cached!!!!
 		$remainOnServer = 1;
@@ -1342,6 +1375,9 @@ set_time_limit(240);
 
 	}
 
+
+
+
  
 	$return1 = "";
 	if ($this_conversion_cached){
@@ -1350,11 +1386,20 @@ set_time_limit(240);
 
 	}
 	else{
-		exec( $command_line, $out, $return1);
-		if ($debug){
-			fwrite($fd_log, "exec return1  $return1   \r\n");
-		}
 
+
+		// 8.37.1
+		if ($svginputfile == 1){
+			// this is an svg we do not convert!!!!
+		} 
+		else{
+
+			exec( $command_line, $out, $return1);
+			if ($debug){
+				fwrite($fd_log, "exec return1  $return1   \r\n");
+			}
+
+		}
 	}
 		
 
@@ -1373,22 +1418,22 @@ set_time_limit(240);
 		$pose = strrpos ( $contentlocation , ".");
 		$exte = substr($contentlocation, $pose+1);
 		$file_1 = $fileLocation  . 'f' . $temp_file_name_org . '.' . $exte;
-		if (file_exists($file_1)){
+		if (file_exists($file_1) && $svginputfile == 0){  // 8.37.1
 			unlink($file_1);
+			if ($debug){
+				fwrite($fd_log, "unlink2  $file_1   \r\n");
+			}
 		}
 
-		if ($debug){
-			fwrite($fd_log, "unlink2  $file_1   \r\n");
-		}
 
 		$file_1 = $fileLocation  . 'f' . $temp_file_name . '.' . $exte;
-		if (file_exists($file_1)){
+		if (file_exists($file_1) && $svginputfile == 0){   // 8.37.1
 			unlink($file_1);
+			if ($debug){
+				fwrite($fd_log, "unlink2  $file_1   \r\n");
+			}
 		}
 		
-		if ($debug){
-			fwrite($fd_log, "unlink2  $file_1   \r\n");
-		}
 
 
 
