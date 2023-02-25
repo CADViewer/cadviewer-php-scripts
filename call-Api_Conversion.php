@@ -15,7 +15,7 @@
 	
 */
 
-	$scriptversion = "8.37.1";
+	$scriptversion = "8.37.2";
 
 	// Configuration file for CADViewer Community and CADViewer Enterprise version and standard settings
 	require 'CADViewer_config.php';
@@ -1439,6 +1439,16 @@ set_time_limit(240);
 
 	}
 
+
+	// 8.37.2  - we have to make the output format the same as the originating file
+	if ($svginputfile == 1){
+		$output_file_extension = strtolower($contentformat);
+	}
+
+
+
+
+
 //if ($debug) echo " unlink2 " . $file_1;
 
 
@@ -1492,10 +1502,12 @@ if ($debug){
 		if ( $contentresponse == 'stream'){
 			$embed_cont = "";
 
-			if ($this_conversion_cached)   // 8.19.3
+			if ($this_conversion_cached){   // 8.19.3{
 				$cont_loc = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=" . $temp_file_name . "&Type=" . $output_file_extension;
-			else
+			}
+			else{
 				$cont_loc = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=f" . $temp_file_name . "&Type=" . $output_file_extension;
+			}
 
 		}
 
@@ -1566,10 +1578,12 @@ if ($debug){
 			if ( $contentresponse == 'stream'){
 				$embed_cont = "";
 
-				if ($this_conversion_cached)   // 8.19.3
+				if ($this_conversion_cached)  { // 8.19.3
 					$cont_loc3 = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=" . $temp_file_name . "&Type=" . $output_file_extension;
-				else
+				}
+				else{
 					$cont_loc3 = $stream_response_cgi . "?remainOnServer=" . $remainOnServer . "&fileTag=" . 'f' . $temp_file_name . "&Type=" . $output_file_extension;
+				}
 
 			}
 

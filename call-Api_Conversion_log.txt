@@ -1,5 +1,5 @@
 
- NEW-FILE-CONVERSION-BEGIN   8.37.1  
+ NEW-FILE-CONVERSION-BEGIN   8.37.2  
  
 Opening call-Api_Conversion_log.txt for new conversion: 
 before _ isset()x2  
@@ -20,9 +20,9 @@ after content location check $server_load:  1  , content-type: (file
  location X004  contentlocation:C:\xampp\htdocs\cadviewer\//content/drawings/dwg/Asbestos_drawing_01.dwg 
 X005 In action: contentype file: C:\xampp\htdocs\cadviewer\//content/drawings/dwg/Asbestos_drawing_01.dwg  
 before download file  
- HELLO! C:\xampp\htdocs\cadviewer\/converters/files/f686350582.dwg  C:\xampp\htdocs\cadviewer\//content/drawings/dwg/Asbestos_drawing_01.dwg 
-$fullPath: C:\xampp\htdocs\cadviewer\/converters/files/f686350582.dwg  
-$fullPath: C:\xampp\htdocs\cadviewer\/converters/files/f686350582.dwg  
+ HELLO! C:\xampp\htdocs\cadviewer\/converters/files/f225313426.dwg  C:\xampp\htdocs\cadviewer\//content/drawings/dwg/Asbestos_drawing_01.dwg 
+$fullPath: C:\xampp\htdocs\cadviewer\/converters/files/f225313426.dwg  
+$fullPath: C:\xampp\htdocs\cadviewer\/converters/files/f225313426.dwg  
 AA: before setting $fullPath:  $server_load 1   $contenttype file 
 $fullPath: C:\xampp\htdocs\cadviewer\//content/drawings/dwg/Asbestos_drawing_01.dwg  
 $max_conv: 5  
@@ -31,11 +31,11 @@ new $add_xpath
 In loop to add xpath  
 after first loop $command_line_parameter_xpath: 0  
 after first loop $command_line_parameter_xpath: 0  converter AutoXchange AX2020   axconv 0 
-adding xpath: $command_line: "C:\xampp\htdocs\cadviewer\/converters/ax2023/windows//AX2023_W64_23_12_108 RC2.exe" "-i=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/Asbestos_drawing_01.dwg" "-o=C:\xampp\htdocs\cadviewer\/converters/files/f686350582.svgz"  "-f=svgz" -last "-fpath=C:\xampp\htdocs\cadviewer\/converters/ax2023/windows/fonts/"  "-lpath=C:\xampp\htdocs\cadviewer\/converters/ax2023/windows/"  "-xpath=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/"  XXXXXXX  
+adding xpath: $command_line: "C:\xampp\htdocs\cadviewer\/converters/ax2023/windows//AX2023_W64_23_12_108 RC2.exe" "-i=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/Asbestos_drawing_01.dwg" "-o=C:\xampp\htdocs\cadviewer\/converters/files/f225313426.svgz"  "-f=svgz" -last "-fpath=C:\xampp\htdocs\cadviewer\/converters/ax2023/windows/fonts/"  "-lpath=C:\xampp\htdocs\cadviewer\/converters/ax2023/windows/"  "-xpath=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/"  XXXXXXX  
 library path before new env: C:\xampp\htdocs\cadviewer\/converters/ax2023/windows/  
 this is the value we got setting the environment 1  
 getenv after putenv: C:\xampp\htdocs\cadviewer\/converters/ax2023/windows/   
-before call to exec:  "C:\xampp\htdocs\cadviewer\/converters/ax2023/windows//AX2023_W64_23_12_108 RC2.exe" "-i=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/Asbestos_drawing_01.dwg" "-o=C:\xampp\htdocs\cadviewer\/converters/files/f686350582.svgz"  "-f=svgz" -last "-fpath=C:\xampp\htdocs\cadviewer\/converters/ax2023/windows/fonts/"  "-lpath=C:\xampp\htdocs\cadviewer\/converters/ax2023/windows/"  "-xpath=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/"     
+before call to exec:  "C:\xampp\htdocs\cadviewer\/converters/ax2023/windows//AX2023_W64_23_12_108 RC2.exe" "-i=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/Asbestos_drawing_01.dwg" "-o=C:\xampp\htdocs\cadviewer\/converters/files/f225313426.svgz"  "-f=svgz" -last "-fpath=C:\xampp\htdocs\cadviewer\/converters/ax2023/windows/fonts/"  "-lpath=C:\xampp\htdocs\cadviewer\/converters/ax2023/windows/"  "-xpath=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/"     
 before call to exec, engine_path:  C:\xampp\htdocs\cadviewer\/converters/ax2023/windows//AX2023_W64_23_12_108 RC2.exe    
 current script owner: caspe    
 AGENT operating_system_detection():  $agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36  
@@ -54,7 +54,7 @@ BEFORE CACHED CONVERSION t: c: 11  0
  timeStamp=   jarray['filecreatestamp']= 1677145890
 temp_file_name= f783653063  XXX output_file_extension= svgz
 Do nothing! we are just loading in the old temp svgz....exec return1 check  0   
-unlink2  C:\xampp\htdocs\cadviewer\/converters/files/f686350582.dwg   
+unlink2  C:\xampp\htdocs\cadviewer\/converters/files/f225313426.dwg   
 Q1 contentresponse  stream   
 Q2:svg_creation   
 Q4: $general_response{"completedAction":"svg_creation","errorCode":"E0","converter":"AutoXchange AX2020","version":"V1.00","userLabel":"fromCADViewerJS","contentLocation":"C:\\xampp\\htdocs\\cadviewer\\//content/drawings/dwg/Asbestos_drawing_01.dwg","contentResponse":"stream","contentStreamData":"http://localhost/cadviewer//php//getFile_09.php?remainOnServer=1&fileTag=f783653063&Type=svgz"}   
