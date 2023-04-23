@@ -418,3 +418,45 @@ PWR07_2.OG.pdf r
 Rua_Tomas_Paes.dwg r
 symap.shx r
 WA4-2.dwg r
+list directory  v2.0.02  
+ r
+Path /content/drawings/dwg/  listtype XX serverfolder XX homedir C:\xampp\htdocs\cadviewer\ pathURL  
+Path C:\xampp\htdocs\cadviewer\/content/drawings/dwg/  listtype XX serverfolder XX  
+. r
+.. r
+1st floor architectural.dwg r
+1st floor electrical.dwg r
+1st floor lighting.dwg r
+1st floor plan.dwg r
+1st_floor_architectural.dwg r
+Asbestos_drawing_01.dwg r
+base_xref_json.dwg r
+CADViewer_JS.pdf r
+City_base_map.dwg r
+City_map.dwg r
+City_map.dwl r
+City_map.dwl2 r
+City_skyway_map.dwg r
+filenames.rw r
+FloorPlan_Office3.dwg r
+Hospital 1.dwg r
+hq17-1.dwg r
+hq17-2.dwg r
+hq17.dwg r
+hq17.dwl r
+hq17.dwl2 r
+hq17_.dwg r
+hq17_layers.dwg r
+linetypes.dwg r
+LI_1077929.dwg r
+LI_1077929_04.svg r
+ma1000_133.dwg r
+measure_template.dwg r
+one_of_simple.dwg r
+PAIsample.tif r
+pgrd30x42horz.dwg r
+PWR07_2.OG.dwg r
+PWR07_2.OG.pdf r
+Rua_Tomas_Paes.dwg r
+symap.shx r
+WA4-2.dwg r

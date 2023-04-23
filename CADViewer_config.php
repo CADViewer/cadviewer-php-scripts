@@ -33,7 +33,7 @@
 // 	Linux
 //	$ax2024_executable = "ax2024_L64_23_12_107";
 // 	Windows
-	$ax2023_executable = "AX2024_W64_24_01_109.exe";
+	$ax2023_executable = "AX2024_W64_24_01_112.exe";
 
 //  USE svgz compression
 	$svgz_compress = true;   // default is false
