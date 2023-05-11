@@ -31,9 +31,9 @@
 	
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$ax2024_executable = "ax2024_L64_23_12_107";
+//	$ax2024_executable = "ax2024_L64_23_12_114";
 // 	Windows
-	$ax2023_executable = "AX2024_W64_24_01_112.exe";
+	$ax2023_executable = "AX2024_W64_24_01_114.exe";
 
 //  USE svgz compression
 	$svgz_compress = true;   // default is false
