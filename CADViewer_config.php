@@ -37,7 +37,7 @@
 	
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$ax2023_executable = "ax2024_L64_23_12_115";
+//	$ax2023_executable = "ax2023_L64_23_12_115";
 // 	Windows
 	$ax2023_executable = "AX2024_W64_24_01_115RC1.exe";
 
@@ -123,10 +123,10 @@
 	$callbackMethod = "getFile_09.php";
 
 //  Debug parameter to check installation - false for normal operation, if true, the document will echo debug information, - no drawings will be displayed -
-	$debug = TRUE;
+	$debug = true;
 
 //  We want bat processing on Windows, to set CODEPAGE for Asian and Chinese UNICODE
-	$windowsbatprocessing = FALSE;
+	$windowsbatprocessing = true;
 
 // Java install folder
 //  Linux
