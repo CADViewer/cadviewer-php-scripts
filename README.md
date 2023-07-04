@@ -55,6 +55,7 @@ Please refer to the general Documentation above, for the PHP back-end handlers, 
 
 1: If a drawing does not display, or an conversion error is indicated, open the log file:  **cadviewer/php/call-Api_Conversion_log.txt**  . This file list all activity concerning the conversion.  Typical error is incorrect path settings. 
 
+In the log file, locate ***before call to exec:*** , capture this command line, strip off the "" around the executable (first part), then open a command prompt and execute this command line from the command prompt. If there are issues with permissions, path naming, executable naming, etc., this command line will show. 
 
 
 
