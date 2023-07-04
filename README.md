@@ -81,7 +81,7 @@ Typically the variables *ServerUrl*, *ServerLocation* or *ServerBackEndUrl* in t
 <br>
 
 
-3: Another issue can be that the path settings in ***/cadviewer/php/CADViewer_config.php*** are not done correctly. This typically manifests in that the drawing will not load/display correctly in CADViewer.
+4: Another issue can be that the path settings in ***/cadviewer/php/CADViewer_config.php*** are not done correctly. This typically manifests in that the drawing will not load/display correctly in CADViewer.
 
 Open the debug file: ***/cadviewer/php/call-Api_Conversion_log.txt***
 
