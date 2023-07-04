@@ -7,12 +7,12 @@ PHP scripts for CADViewer control of back-end converters.
 
 1: PHP scripts for CADViewer for communication between CADViewer and server side AutoXchange 2024 CAD converter, as well scrips for all other server operations; file-operations, etc. 
 - Install this in its preferred folder structure:  /cadviewer/php/
-- With **[CADViewer Script Library](https://github.com/CADViewer/cadviewer-script-library)** on Windows, the folder:  ***C:\xampp\htdocs\cadviewer\php***
-- With **[CADViewer Script Library](https://github.com/CADViewer/cadviewer-script-library)** on Linux, the folder:  ***/var/www/html/cadviewer/php***
+- With [CADViewer Script Library](https://github.com/CADViewer/cadviewer-script-library) on Windows, the folder:  ***C:\xampp\htdocs\cadviewer\php***
+- With [CADViewer Script Library](https://github.com/CADViewer/cadviewer-script-library) on Linux, the folder:  ***/var/www/html/cadviewer/php***
 
 ## This package does not contains
 
-2: **[CADViewer Script Library](https://github.com/CADViewer/cadviewer-script-library)**, see: **https://github.com/CADViewer/cadviewer-script-library**
+2: [CADViewer Script Library](https://github.com/CADViewer/cadviewer-script-library), see: https://github.com/CADViewer/cadviewer-script-library
 
 3: Any back-end CAD Converters such as AutoXchange 2024
 
@@ -23,16 +23,17 @@ Install CADViewer and back-end CAD Converters, follow installation instructions 
 
 A: As a preferred alternative, install a full server of CADViewer including both script library and converters in a preferred folder-structure. https://github.com/CADViewer/cadviewer-script-library
 
-B: Once 2: and 3: is installed, typically the HTML samples under /cadviewer/html/ can be run from a web-browser. Use http://localhost/cadviewer/html/CADViewer_fileloader_80.html as a starting point (assuming that your have installed under http://localhost).
+B: Configuration file setup
+- If on Windows, copy ***CADViewer_config_windows.php*** to ***CADViewer_config.php**    (setup for /xampp/htdocs/cadviewer)
+- If on Linux, copy ***CADViewer_config_linux.php*** to ***CADViewer_config.php**  (setup for /var/www/html/cadviewer)
 
+C: Once 2: and 3: is installed, typically the HTML samples are under /cadviewer/html/ and can be run from a web-browser. Use ***http://localhost/cadviewer/html/CADViewer_fileloader_80.html*** as a starting point (assuming that your have installed under http://localhost).
 
-C: If changing the location of the installation, please update ***/cadviewer/php/CADViewer_config.php***. The top part of this config file contains automated settings of ***$home_dir*** (cadviewer install folder) and ***$httpHost*** (cadviewer install folder url), but they can be manually overwritten. It also contains settings for the install platform (windows or linux). 
+D: If changing the location of the installation, please update ***/cadviewer/php/CADViewer_config.php***. The top part of this config file contains automated settings of ***$home_dir*** (cadviewer install folder) and ***$httpHost*** (cadviewer install folder url), but they can be manually overwritten. It also contains settings for the install platform (windows or linux). 
 
-D: If updating any of executables in the install structure, then update their variable names in  ***/cadviewer/php/CADViewer_config.php**. These varaiables can be found with ***"_executable"*** in the variable name, for example ***"ax2023_executable"***. 
+E: If updating any of executables in the install structure, then update their variable names in  ***/cadviewer/php/CADViewer_config.php**. These varaiables can be found with ***"_executable"*** in the variable name, for example ***"ax2023_executable"***. 
 
-E: Please note the variable controls in the HTML documents as described below in ***Troubleshooting***.
-
-
+F: Please note the variable controls in the HTML documents as described below in ***Troubleshooting***.
 
 
 ## Documentation 
