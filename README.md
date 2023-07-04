@@ -53,7 +53,13 @@ Please refer to the general Documentation above, for the PHP back-end handlers, 
  
  ## Troubleshooting
 
-1: One issue that often appears in installations is that interface icons do not display properly:
+1: If a drawing does not display, or an conversion error is indicated, open the log file:  **cadviewer/php/call-Api_Conversion_log.txt**  . This file list all activity concerning the conversion.  Typical error is incorrect path settings. 
+
+
+
+
+
+2: One issue that often appears in installations is that interface icons do not display properly:
 
 ![Icons](https://cadviewer.com/cadviewertechdocs/images/missing_icons.png "Icons missing")
 
@@ -69,7 +75,7 @@ Typically the variables *ServerUrl*, *ServerLocation* or *ServerBackEndUrl* in t
 <br>
 
 
-2: Another issue can be that the path settings in ***/cadviewer/php/CADViewer_config.php*** are not done correctly. This typically manifests in that the drawing will not load/display correctly in CADViewer.
+3: Another issue can be that the path settings in ***/cadviewer/php/CADViewer_config.php*** are not done correctly. This typically manifests in that the drawing will not load/display correctly in CADViewer.
 
 Open the debug file: ***/cadviewer/php/call-Api_Conversion_log.txt***
 
