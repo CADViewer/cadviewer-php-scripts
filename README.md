@@ -5,14 +5,14 @@ PHP scripts for CADViewer control of back-end converters.
 
 ## This package contains
 
-1: PHP scripts for CADViewer for communication between CADViewer and server side AutoXchange 2022 CAD converter, as well scrips for all other server operations; file-operations, etc. 
+1: PHP scripts for CADViewer for communication between CADViewer and server side AutoXchange 2024 CAD converter, as well scrips for all other server operations; file-operations, etc. 
 - Install this in its preferred folder structure:  /cadviewer/php/
 
 ## This package does not contains
 
 2: CADViewer script library
 
-3: Any back-end CAD Converters such as AutoXchange 2022
+3: Any back-end CAD Converters such as AutoXchange 2024
 
 
 ## How to Use
