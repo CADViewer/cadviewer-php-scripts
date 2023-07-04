@@ -17,13 +17,12 @@
 
 
 
+
 //  Home directory, the local path corresponding to the http host - note use direct setting if path different from cadviewer. 
 //  Windows
 //	$home_dir = "/xampp/htdocs/cadviewer/";
 //  Linux
 //	$home_dir = "/var/www/html/cadviewer/";
-
-
 
 
 //MOST PATHS ARE SET UP BASED ON HttpHost and home_dir    (Users can change this setting if an implementation needs to split up locations)
@@ -32,14 +31,14 @@
 
 
 // set the platform for /converter subfolder
-	$platform = "windows";
-//	$platform = "linux";
+//	$platform = "windows";
+	$platform = "linux";
 	
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$ax2023_executable = "ax2024_L64_23_12_115";
+	$ax2023_executable = "ax2024_L64_23_12_115";
 // 	Windows
-	$ax2023_executable = "AX2024_W64_24_01_115RC1.exe";
+//	$ax2023_executable = "AX2024_W64_24_01_115RC1.exe";
 
 //  USE svgz compression
 	$svgz_compress = true;   // default is false
@@ -53,15 +52,15 @@
 
 //  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
+	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
 // 	Windows
-	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
+//	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
 
 //  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
+	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
 // 	Windows
-	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
+//	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
 
 	// if checkorigin is false, all domains allowed * , if true, then checking from $allowed_domains
 	$checkorigin=false;
