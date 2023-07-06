@@ -126,7 +126,7 @@
 	$debug = true;
 
 //  We want bat processing on Windows, to set CODEPAGE for Asian and Chinese UNICODE
-	$windowsbatprocessing = true;
+	$windowsbatprocessing = false;
 
 // Java install folder
 //  Linux
