@@ -1,5 +1,6 @@
 <?php
 
+// v9.5.2 -2023-08-21
 //  New: Use this code to find $httpHost and $home_dir based on current location, if under /cadviewer/
 	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 	$pos1 = stripos($actual_link, "/cadviewer/");
@@ -15,8 +16,6 @@
 //  URL to the location of home directory the converter infrastructure
 //	$httpHost = "http://localhost/cadviewer/";
 
-
-
 //  Home directory, the local path corresponding to the http host - note use direct setting if path different from cadviewer. 
 //  Windows
 //	$home_dir = "/xampp/htdocs/cadviewer/";
@@ -24,22 +23,37 @@
 //	$home_dir = "/var/www/html/cadviewer/";
 
 
-
-
 //MOST PATHS ARE SET UP BASED ON HttpHost and home_dir    (Users can change this setting if an implementation needs to split up locations)
 // NEW  we make an $home_dir_app  to give the user the ability to freely move $fileLocation + $converterLocation away from web-structure
-	$home_dir_app = $home_dir;
+$home_dir_app = $home_dir;
 
+$platform = "notset";
+$ax2023_executable = "notset";
+
+if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'){
+
+	$platform = "windows";
+	$ax2023_executable = "AX2024_W64_24_07_119.exe";
+	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
+	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
+
+}else{
+
+	$platform = "linux";
+	$ax2023_executable = "ax2023_L64_23_12_119";
+	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
+	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
+}
 
 // set the platform for /converter subfolder
-	$platform = "windows";
+//	$platform = "windows";
 //	$platform = "linux";
 	
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
 //	$ax2023_executable = "ax2023_L64_23_12_115";
 // 	Windows
-	$ax2023_executable = "AX2024_W64_24_01_115RC1.exe";
+//	$ax2023_executable = "AX2024_W64_24_01_115RC1.exe";
 
 //  USE svgz compression
 	$svgz_compress = true;   // default is false
@@ -50,18 +64,17 @@
 	$cached_conversion = false;
 
 
-
 //  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
 //	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
 // 	Windows
-	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
+//	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
 
 //  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
 //	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
 // 	Windows
-	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
+//	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
 
 	// if checkorigin is false, all domains allowed * , if true, then checking from $allowed_domains
 	$checkorigin=false;
@@ -111,7 +124,8 @@
 
 
 //  Path to the location of the license key axlic.key file, typically this is the same location as AX2020
-	$fontLocation = $home_dir . "/converters/ax2024/". $platform. "/fonts/";
+//	$fontLocation = $home_dir . "/converters/ax2024/". $platform. "/fonts/";
+	$fontLocation = $home_dir . "/converters/ax2024/fonts/";
 
 
 //  Path to the XRef locations for external referenced drawings
