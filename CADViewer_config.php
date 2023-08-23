@@ -1,6 +1,6 @@
 <?php
 
-// v9.5.2 -2023-08-21
+// v9.5.2 -2023-08-23
 //  New: Use this code to find $httpHost and $home_dir based on current location, if under /cadviewer/
 	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 	$pos1 = stripos($actual_link, "/cadviewer/");
@@ -44,6 +44,8 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'){
 	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
 	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
 }
+
+
 
 // set the platform for /converter subfolder
 //	$platform = "windows";
