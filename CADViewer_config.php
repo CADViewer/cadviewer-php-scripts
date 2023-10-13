@@ -40,7 +40,7 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'){
 }else{
 
 	$platform = "linux";
-	$ax2023_executable = "ax2023_L64_23_12_122c";
+	$ax2023_executable = "ax2023_L64_23_12_123";
 	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
 	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
 }
