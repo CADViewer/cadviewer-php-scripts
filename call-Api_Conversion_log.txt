@@ -22,25 +22,25 @@ after content location check $server_load:  1  , content-type: (file
  location X004  contentlocation:C:\xampp\htdocs\cadviewer\//content/drawings/dwg/hq17_.dwg 
 X005 In action: contentype file: C:\xampp\htdocs\cadviewer\//content/drawings/dwg/hq17_.dwg  
 before download file  
- HELLO! C:\xampp\htdocs\cadviewer\/converters/files/f1657135667.dwg  C:\xampp\htdocs\cadviewer\//content/drawings/dwg/hq17_.dwg 
+ HELLO! C:\xampp\htdocs\cadviewer\/converters/files/f1509727371.dwg  C:\xampp\htdocs\cadviewer\//content/drawings/dwg/hq17_.dwg 
 urldecode: C:\xampp\htdocs\cadviewer\//content/drawings/dwg/hq17_.dwg 
- $fullPath: C:\xampp\htdocs\cadviewer\/converters/files/f1657135667.dwg  
-$fullPath: C:\xampp\htdocs\cadviewer\/converters/files/f1657135667.dwg  
+ $fullPath: C:\xampp\htdocs\cadviewer\/converters/files/f1509727371.dwg  
+$fullPath: C:\xampp\htdocs\cadviewer\/converters/files/f1509727371.dwg  
 AA: before setting $fullPath:  $server_load 1   $contenttype file 
 $fullPath: C:\xampp\htdocs\cadviewer\//content/drawings/dwg/hq17_.dwg  
 $max_conv: 5  
-$engine_path: C:\xampp\htdocs\cadviewer\/converters/ax2024/windows//AX2024_W64_24_07_123.exe  
+$engine_path: C:\xampp\htdocs\cadviewer\/converters/ax2024/windows//AX2024_W64_24_07_123d.exe  
 new $add_xpath    
 In loop to add xpath  
 after first loop $command_line_parameter_xpath: 0  
 after first loop $command_line_parameter_xpath: 0  converter AutoXchange AX2020   axconv 0 
 adding xpath: nc-flag:  op_string:  winnt nc_path: 
-$command_line: "C:\xampp\htdocs\cadviewer\/converters/ax2024/windows//AX2024_W64_24_07_123.exe" "-i=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/hq17_.dwg" "-o=C:\xampp\htdocs\cadviewer\/converters/files/f1657135667.svgz"  "-f=svgz" -last -extents "-rl=RM_" "-tl=RM_TXT" "-fpath=C:\xampp\htdocs\cadviewer\/converters/ax2024/fonts/"  "-lpath=C:\xampp\htdocs\cadviewer\/converters/ax2024/windows/"  "-xpath=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/"  XXXXXXX  
+$command_line: "C:\xampp\htdocs\cadviewer\/converters/ax2024/windows//AX2024_W64_24_07_123d.exe" "-i=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/hq17_.dwg" "-o=C:\xampp\htdocs\cadviewer\/converters/files/f1509727371.svgz"  "-f=svgz" -last -extents "-rl=RM_" "-tl=RM_TXT" "-fpath=C:\xampp\htdocs\cadviewer\/converters/ax2024/fonts/"  "-lpath=C:\xampp\htdocs\cadviewer\/converters/ax2024/windows/"  "-xpath=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/"  XXXXXXX  
 library path before new env: C:\xampp\htdocs\cadviewer\/converters/ax2024/windows/  
 this is the value we got setting the environment 1  
 getenv after putenv: C:\xampp\htdocs\cadviewer\/converters/ax2024/windows/   
-before call to exec:  "C:\xampp\htdocs\cadviewer\/converters/ax2024/windows//AX2024_W64_24_07_123.exe" "-i=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/hq17_.dwg" "-o=C:\xampp\htdocs\cadviewer\/converters/files/f1657135667.svgz"  "-f=svgz" -last -extents "-rl=RM_" "-tl=RM_TXT" "-fpath=C:\xampp\htdocs\cadviewer\/converters/ax2024/fonts/"  "-lpath=C:\xampp\htdocs\cadviewer\/converters/ax2024/windows/"  "-xpath=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/"     
-before call to exec, engine_path:  C:\xampp\htdocs\cadviewer\/converters/ax2024/windows//AX2024_W64_24_07_123.exe    
+before call to exec:  "C:\xampp\htdocs\cadviewer\/converters/ax2024/windows//AX2024_W64_24_07_123d.exe" "-i=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/hq17_.dwg" "-o=C:\xampp\htdocs\cadviewer\/converters/files/f1509727371.svgz"  "-f=svgz" -last -extents "-rl=RM_" "-tl=RM_TXT" "-fpath=C:\xampp\htdocs\cadviewer\/converters/ax2024/fonts/"  "-lpath=C:\xampp\htdocs\cadviewer\/converters/ax2024/windows/"  "-xpath=C:\xampp\htdocs\cadviewer\//content/drawings/dwg/"     
+before call to exec, engine_path:  C:\xampp\htdocs\cadviewer\/converters/ax2024/windows//AX2024_W64_24_07_123d.exe    
 current script owner: caspe    
 AGENT operating_system_detection():  $agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36  
 AGENT PHP_OS : WINNT
@@ -49,29 +49,28 @@ BEFORE CACHED CONVERSION t: c: 1  0
  exec return1  0   
 output log:  
 ===========================================================================  
-                  AutoXchange 2024 V24.07.123  64-bit  
+                  AutoXchange 2024 V24.07.123d  64-bit  
            Copyright (c) 2017-2023 Tailor Made Software, Ltd.  
                           All Rights Reserved  
   
        Portions Copyright (c) 1997-2016, Tailor Made Software, Ltd.  
 ===========================================================================  
-License Key Expired  
-Unsupported license version. Please contact sales@tailormade.com for an upgrade.  
-License Expired  
+License Validated  
 Input file: C:\xampp\htdocs\cadviewer\\\content\drawings\dwg\hq17_.dwg  
-Output File Name: C:\xampp\htdocs\cadviewer\\converters\files\f1657135667.svg  
+Output File Name: C:\xampp\htdocs\cadviewer\\converters\files\f1509727371.svg  
+Lineweight: 25   pixelWeight: 0  
   
-OpenFile: C:\xampp\htdocs\cadviewer\\converters\files\f1657135667.svg  
-OpenMemoryFile: C:\xampp\htdocs\cadviewer\\converters\files\f1657135667.svg  
+OpenFile: C:\xampp\htdocs\cadviewer\\converters\files\f1509727371.svg  
+OpenMemoryFile: C:\xampp\htdocs\cadviewer\\converters\files\f1509727371.svg  
   
-Elapsed Time: 0.116 seconds  
+Elapsed Time: 0.131 seconds  
 exec return1 check  0   
-unlink2  C:\xampp\htdocs\cadviewer\/converters/files/f1657135667.dwg   
+unlink2  C:\xampp\htdocs\cadviewer\/converters/files/f1509727371.dwg   
 Q1 contentresponse  stream   
 Q2:svg_creation   
-Q4: $general_response{"completedAction":"svg_creation","errorCode":"E0","converter":"AutoXchange AX2020","version":"V1.00","userLabel":"fromCADViewerJS","contentLocation":"C:\\xampp\\htdocs\\cadviewer\\//content/drawings/dwg/hq17_.dwg","contentResponse":"stream","contentStreamData":"http://localhost/cadviewer//php//getFile_09.php?remainOnServer=0&fileTag=f1657135667&Type=svgz"}   
-Q5: 0  1  $json_response"{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"C:\\\\xampp\\\\htdocs\\\\cadviewer\\\\\/\/content\/drawings\/dwg\/hq17_.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f1657135667&Type=svgz\"}"   
-$json_response = "{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"C:\\\\xampp\\\\htdocs\\\\cadviewer\\\\\/\/content\/drawings\/dwg\/hq17_.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f1657135667&Type=svgz\"}"  
+Q4: $general_response{"completedAction":"svg_creation","errorCode":"E0","converter":"AutoXchange AX2020","version":"V1.00","userLabel":"fromCADViewerJS","contentLocation":"C:\\xampp\\htdocs\\cadviewer\\//content/drawings/dwg/hq17_.dwg","contentResponse":"stream","contentStreamData":"http://localhost/cadviewer//php//getFile_09.php?remainOnServer=0&fileTag=f1509727371&Type=svgz"}   
+Q5: 0  1  $json_response"{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"C:\\\\xampp\\\\htdocs\\\\cadviewer\\\\\/\/content\/drawings\/dwg\/hq17_.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f1509727371&Type=svgz\"}"   
+$json_response = "{\"completedAction\":\"svg_creation\",\"errorCode\":\"E0\",\"converter\":\"AutoXchange AX2020\",\"version\":\"V1.00\",\"userLabel\":\"fromCADViewerJS\",\"contentLocation\":\"C:\\\\xampp\\\\htdocs\\\\cadviewer\\\\\/\/content\/drawings\/dwg\/hq17_.dwg\",\"contentResponse\":\"stream\",\"contentStreamData\":\"http:\/\/localhost\/cadviewer\/\/php\/\/getFile_09.php?remainOnServer=0&fileTag=f1509727371&Type=svgz\"}"  
 $post_request_flag=1 $json_response only  
 LAST BEFORE CALLBACK   
  
