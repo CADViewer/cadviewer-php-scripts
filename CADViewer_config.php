@@ -33,14 +33,14 @@ $ax2023_executable = "notset";
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'){
 
 	$platform = "windows";
-	$ax2023_executable = "AX2024_W64_24_07_123d.exe";
+	$ax2023_executable = "AX2024_W64_24_07_125.exe";
 	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
 	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
 
 }else{
 
 	$platform = "linux";
-	$ax2023_executable = "ax2023_L64_23_12_123d";
+	$ax2023_executable = "ax2023_L64_23_12_125";
 	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
 	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
 }
