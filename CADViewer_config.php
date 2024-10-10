@@ -33,7 +33,7 @@ $ax2023_executable = "notset";
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'){
 
 	$platform = "windows";
-	$ax2023_executable = "AX2024_W64_24_07_125.exe";
+	$ax2023_executable = "AX2025_W64_25_07_142.exe";
 	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
 	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
 
