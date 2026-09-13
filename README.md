@@ -5,7 +5,7 @@ PHP scripts for CADViewer control of back-end converters.
 
 ## This package contains
 
-1: PHP scripts for CADViewer for communication between CADViewer and server side AutoXchange 2024 CAD converter, as well scrips for all other server operations; file-operations, etc. 
+1: PHP scripts for CADViewer for communication between CADViewer and server side AutoXchange 2026 CAD converter, as well scrips for all other server operations; file-operations, etc. 
 - Install this in its preferred folder structure:  /cadviewer/php/
 - With [CADViewer Script Library](https://github.com/CADViewer/cadviewer-script-library) on Windows, the folder:  ***C:\xampp\htdocs\cadviewer\php***
 - With [CADViewer Script Library](https://github.com/CADViewer/cadviewer-script-library) on Linux, the folder:  ***/var/www/html/cadviewer/php***
@@ -14,7 +14,7 @@ PHP scripts for CADViewer control of back-end converters.
 
 2: [CADViewer Script Library](https://github.com/CADViewer/cadviewer-script-library), see: https://github.com/CADViewer/cadviewer-script-library
 
-3: Any back-end CAD Converters such as AutoXchange 2024
+3: Any back-end CAD Converters such as AutoXchange 2026
 
 
 ## How to Use
@@ -27,7 +27,7 @@ B: Configuration file setup
 - If on Windows, copy ***CADViewer_config_windows.php*** to ***CADViewer_config.php**    (setup for /xampp/htdocs/cadviewer)
 - If on Linux, copy ***CADViewer_config_linux.php*** to ***CADViewer_config.php**  (setup for /var/www/html/cadviewer)
 
-C: Once 2: and 3: is installed, typically the HTML samples are under /cadviewer/html/ and can be run from a web-browser. Use ***http://localhost/cadviewer/html/CADViewer_fileloader_80.html*** as a starting point (assuming that your have installed under http://localhost).
+C: Once 2: and 3: is installed, typically the HTML samples are under /cadviewer/html/ and can be run from a web-browser. Use ***http://localhost/cadviewer/html/CADViewer_fileloader_12.html*** as a starting point (assuming that your have installed under http://localhost).
 
 D: If changing the location of the installation, please update ***/cadviewer/php/CADViewer_config.php***. The top part of this config file contains automated settings of ***$home_dir*** (cadviewer install folder) and ***$httpHost*** (cadviewer install folder url), but they can be manually overwritten. It also contains settings for the install platform (windows or linux). 
 
@@ -101,5 +101,5 @@ Run this from a command line prompt. Checks if there are any permission or path 
 
 
  
-**Have Fun!**  - and get in [touch](mailto:developer@tailormade.com)  with us!
+**Have Fun!**  - and get in [touch](mailto:developer@cadviewer.com)  with us!
 
