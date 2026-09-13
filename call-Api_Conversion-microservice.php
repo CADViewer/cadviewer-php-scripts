@@ -15,7 +15,7 @@
 
 */
 
-$scriptversion = "12.12.4";
+$scriptversion = "11.05.2";
 
 // 8.71.1  - we make flag for nextcloud
 $nextcloud = false;
@@ -305,28 +305,28 @@ try {
 			[
 				"converter" => "AutoXchange AX2020",
 				"version" => "V1.00",
-				"executable" => $ax2026_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "AutoXchange AX2022",
 				"version" => "V2.00",
-				"executable" => $ax2026_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "AutoXchange AX2020 DEMO",
 				"version" => "V1.00",
-				"executable" => $ax2026_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "LinkList 2020",
 				"version" => "V2.00",
-				"executable" => $linklist2026_executable,
+				"executable" => $linklist2023_executable,
 				"location" => $linklistLocation,
 				"status" => "active"
 			]

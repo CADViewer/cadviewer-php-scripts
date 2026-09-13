@@ -15,7 +15,7 @@
 
 */
 
-$scriptversion = "12.12.4";
+$scriptversion = "11.05.2";
 
 // 8.71.1  - we make flag for nextcloud
 $nextcloud = false;
@@ -305,28 +305,28 @@ try {
 			[
 				"converter" => "AutoXchange AX2020",
 				"version" => "V1.00",
-				"executable" => $ax2026_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "AutoXchange AX2022",
 				"version" => "V2.00",
-				"executable" => $ax2026_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "AutoXchange AX2020 DEMO",
 				"version" => "V1.00",
-				"executable" => $ax2026_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "LinkList 2020",
 				"version" => "V2.00",
-				"executable" => $linklist2026_executable,
+				"executable" => $linklist2023_executable,
 				"location" => $linklistLocation,
 				"status" => "active"
 			]
@@ -1635,7 +1635,39 @@ try {
 				// this is an svg we do not convert!!!!
 			} else {
 
-				exec($command_line, $out, $return1);
+				// proc_open() replacement for exec() - used when exec() is disabled on host
+				$descriptors = [
+					0 => ['pipe', 'r'],  // stdin
+					1 => ['pipe', 'w'],  // stdout
+					2 => ['pipe', 'w'],  // stderr
+				];
+
+				$process = proc_open($command_line, $descriptors, $pipes);
+
+				if (is_resource($process)) {
+					fclose($pipes[0]); // no stdin needed
+
+					$stdout = stream_get_contents($pipes[1]);
+					fclose($pipes[1]);
+
+					$stderr = stream_get_contents($pipes[2]);
+					fclose($pipes[2]);
+
+					$return1 = proc_close($process); // exit code, matches exec() 3rd arg
+
+					// Match exec() behaviour: $out is an array of lines (no trailing newlines)
+					$out = $stdout !== '' ? explode("\n", rtrim($stdout, "\n")) : [];
+
+					if ($debug) {
+						fwrite($fd_log, "proc_open stderr: $stderr  \r\n");
+					}
+				} else {
+					$return1 = -1;
+					$out = [];
+					if ($debug) {
+						fwrite($fd_log, "proc_open failed to start process: $command_line  \r\n");
+					}
+				}
 				if ($debug) {
 					fwrite($fd_log, "exec return1  $return1   \r\n");
 

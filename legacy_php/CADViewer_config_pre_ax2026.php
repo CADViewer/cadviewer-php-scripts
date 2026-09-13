@@ -28,21 +28,23 @@ $home_dir = substr($currentpath, 0, $pos1 + 10);
 $home_dir_app = $home_dir;
 
 $platform = "notset";
-$ax2026_executable = "notset";
+$ax2023_executable = "notset";
 
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 
 	$platform = "windows";
-	$ax2026_executable = "AX2026_W64_27_07_163b.exe";
-	$dwgmerge2026_executable = "DwgMerge2023_W32_23_01_01.exe";
-	$linklist2026_executable = "LinkList_2025_W64_25_07_14.exe";
+	$ax2023_executable = "AX2025_W64_25_11_157b.exe";
+	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
+	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
+
 } else {
 
 	$platform = "linux";
-	$ax2026_executable = "ax2026_L64_27_06b_163b";
-	$dwgmerge2026_executable = "DwgMerge_2023_L64_23_12_03";
-	$linklist2026_executable = "LinkList_2025_L64_25_07_14";
+	$ax2023_executable = "ax2023_L64_23_12_125";
+	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
+	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
 }
+
 
 
 // set the platform for /converter subfolder
@@ -51,9 +53,9 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$ax2026_executable = "ax2023_L64_23_12_115";
+//	$ax2023_executable = "ax2023_L64_23_12_115";
 // 	Windows
-//	$ax2026_executable = "AX2024_W64_24_01_115RC1.exe";
+//	$ax2023_executable = "AX2024_W64_24_01_115RC1.exe";
 
 //  USE svgz compression
 $svgz_compress = true;   // default is false
@@ -66,15 +68,15 @@ $cached_conversion = false;
 
 //  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$dwgmerge2026_executable = "DwgMerge_W32_19_01_02";
+//	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
 // 	Windows
-//	$dwgmerge2026_executable = "DwgMerge_W32_20_02_00b.exe";
+//	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
 
 //  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$linklist2026_executable = "LinkList_2023_W64_23_05_25";
+//	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
 // 	Windows
-//	$linklist2026_executable = "LinkList_2023_W64_23_05_25.exe";
+//	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
 
 // if checkorigin is false, all domains allowed * , if true, then checking from $allowed_domains
 $checkorigin = false;
@@ -106,26 +108,26 @@ $fileLocationUrl = $httpHost . "/converters/files/";
 
 
 //  Path to the location of the AutoXchange ax2024 converter infrastructure
-$converterLocation = $home_dir . "/converters/autoxchange/" . $platform . "/";
+$converterLocation = $home_dir . "/converters/ax2024/" . $platform . "/";
 
 
 //  Path to the location of the DWGMerge 2019 converter infrastructure
-$dwgmergeLocation = $home_dir . "/converters/dwgmerge/" . $platform . "/";
+$dwgmergeLocation = $home_dir . "/converters/dwgmerge2023/" . $platform . "/";
 
 //  Path to the location of the Linklist converter infrastructure
-$linklistLocation = $home_dir . "/converters/linklist/" . $platform . "/";
+$linklistLocation = $home_dir . "/converters/linklist2023/" . $platform . "/";
 
 
 //  Conversion engines executables - Community Version
 $community_executable = "dwg2SVG.exe";
 
 //  Path to the location of the license key axlic.key file, typically this is the same location as AX2020
-$licenseLocation = $home_dir . "/converters/autoxchange/" . $platform . "/";
+$licenseLocation = $home_dir . "/converters/ax2024/" . $platform . "/";
 
 
 //  Path to the location of the license key axlic.key file, typically this is the same location as AX2020
 //	$fontLocation = $home_dir . "/converters/ax2024/". $platform. "/fonts/";
-$fontLocation = $home_dir . "/converters/autoxchange/fonts/";
+$fontLocation = $home_dir . "/converters/ax2024/fonts/";
 
 
 //  Path to the XRef locations for external referenced drawings
