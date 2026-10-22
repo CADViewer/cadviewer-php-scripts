@@ -28,7 +28,26 @@ else
 	$bldg = "";
 
 
-$conn = new mysqli("localhost", $username, $password, "vizquery_public_demo");
+// This demo needs the mysqli extension plus a local MySQL holding
+// vizquery_public_demo. The public demo image ships neither: new mysqli()
+// raises Error "Class mysqli not found", the request ends in a 500 and
+// Search Console records it as "Server error (5xx)". Report the
+// unavailability as JSON instead of crashing. Throwable, not
+// mysqli_sql_exception: a missing extension is an Error, not an exception
+// from the driver.
+if (!class_exists('mysqli')) {
+	http_response_code(503);
+	echo json_encode(["error" => "mysqli extension not available"]);
+	exit;
+}
+
+try {
+	$conn = new mysqli("localhost", $username, $password, "vizquery_public_demo");
+} catch (Throwable $e) {
+	http_response_code(503);
+	echo json_encode(["error" => "database unavailable"]);
+	exit;
+}
 
 
 // FIRST GET THE DEPARTMENTS
