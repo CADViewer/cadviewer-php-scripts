@@ -50,28 +50,28 @@ $listtype = "";
 
 
 if (!empty($_GET)) {
-	$pdf_file = $_GET['pdf_file'];
-	$pdf_file_name = $_GET['pdf_file_name'];
-	$from_name = $_GET['from_name'];
-	$from_mail = $_GET['from_mail'];
-	$cc_mail = $_GET['cc_mail'];
-	$replyto = $_GET['replyto'];
-	$to_mail = $_GET['to_mail'];
-	$mail_title = $_GET['mail_title'];
-	$mail_message = $_GET['mail_message'];
-	$listtype = $_GET['listtype'];
+	$pdf_file = $_GET['pdf_file'] ?? '';
+	$pdf_file_name = $_GET['pdf_file_name'] ?? '';
+	$from_name = $_GET['from_name'] ?? '';
+	$from_mail = $_GET['from_mail'] ?? '';
+	$cc_mail = $_GET['cc_mail'] ?? '';
+	$replyto = $_GET['replyto'] ?? '';
+	$to_mail = $_GET['to_mail'] ?? '';
+	$mail_title = $_GET['mail_title'] ?? '';
+	$mail_message = $_GET['mail_message'] ?? '';
+	$listtype = $_GET['listtype'] ?? '';
 }
 else{
-	$pdf_file = $_POST['pdf_file'];
-	$pdf_file_name = $_POST['pdf_file_name'];
-	$from_name = $_POST['from_name'];
-	$from_mail = $_POST['from_mail'];
-	$cc_mail = $_POST['cc_mail'];
-	$replyto = $_POST['replyto'];
-	$to_mail = $_POST['to_mail'];
-	$mail_title = $_POST['mail_title'];
-	$mail_message = $_POST['mail_message'];
-	$listtype = $_POST['listtype'];
+	$pdf_file = $_POST['pdf_file'] ?? '';
+	$pdf_file_name = $_POST['pdf_file_name'] ?? '';
+	$from_name = $_POST['from_name'] ?? '';
+	$from_mail = $_POST['from_mail'] ?? '';
+	$cc_mail = $_POST['cc_mail'] ?? '';
+	$replyto = $_POST['replyto'] ?? '';
+	$to_mail = $_POST['to_mail'] ?? '';
+	$mail_title = $_POST['mail_title'] ?? '';
+	$mail_message = $_POST['mail_message'] ?? '';
+	$listtype = $_POST['listtype'] ?? '';
 }
 
 
@@ -87,6 +87,17 @@ if ($listtype == "serverfolder"){
 
 
 $file = $pdf_file;
+// Same as load-file.php: with no parameters $file is empty and
+// file_get_contents() raises "Path must not be empty" (ValueError since
+// PHP 8) -> 500. A request without an attachment path or a recipient is
+// malformed, so answer 400 instead of crashing.
+if ($file === "" || $email === "") {
+	http_response_code(400);
+	header('Content-Type: text/plain; charset=UTF-8');
+	echo "missing required parameters: pdf_file, to_mail";
+	exit;
+}
+
 $content = file_get_contents( $file);
 $content = chunk_split(base64_encode($content));
 $uid = md5(uniqid(time()));

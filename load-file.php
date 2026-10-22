@@ -117,6 +117,18 @@ $contents = '';
 
 $fp = "";
 
+// A crawler, or any bare request, reaches this script with no parameters at
+// all. $fullPath is then an empty string and fopen() raises "Path must not be
+// empty" (a ValueError since PHP 8), which Apache reports as a 500 and Search
+// Console records as "Server error (5xx)". The request is malformed, the
+// server is not broken: answer 400 and stop.
+if ($fullPath === "") {
+	http_response_code(400);
+	header('Content-Type: text/plain; charset=UTF-8');
+	echo "missing required parameter: file";
+	exit;
+}
+
 if ($fd = fopen ($fullPath, "rb")) {
     while(!feof($fd)) {
 //        $buffer = fread($fd, 2048);
